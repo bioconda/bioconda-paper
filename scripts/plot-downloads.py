@@ -4,6 +4,9 @@ import pandas as pd
 
 packages = pd.read_table(snakemake.input[0])
 
+sns.set_style("white")
+sns.set_palette("Set1")
+
 sns.boxplot(x="ecosystem",
             y="downloads",
             data=packages,
