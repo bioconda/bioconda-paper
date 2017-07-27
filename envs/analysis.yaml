@@ -3,6 +3,6 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - pandas
-  - seaborn
-  - matplotlib
+  - pandas ==0.20.3
+  - seaborn ==0.8.0
+  - matplotlib ==2.0.2

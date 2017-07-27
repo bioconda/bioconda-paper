@@ -4,12 +4,14 @@ import requests
 
 
 repodata = requests.get("https://conda.anaconda.org/bioconda/linux-64/repodata.json").json()
-packages = [p["name"] for p in repodata["packages"].values()]
+packages = set(p["name"] for p in repodata["packages"].values())
 
 
 rule all:
     input:
-        "plots/downloads.pdf"
+        expand("plots/{plot}.pdf",
+               plot=["downloads", "ecosystems"])
+
 
 
 rule get_package_data:
@@ -43,3 +45,14 @@ rule plot_downloads:
         "envs/analysis.yaml"
     script:
         "scripts/plot-downloads.py"
+
+
+rule plot_ecosystems:
+    input:
+        "package-data/all.tsv"
+    output:
+        "plots/ecosystems.pdf"
+    conda:
+        "envs/analysis.yaml"
+    script:
+        "scripts/plot-ecosystems.py"
