@@ -42,7 +42,7 @@ fig = plt.figure()
 ax = fig.add_subplot(111)
 
 sns.regplot('days', 'log10(downloads)', df, ax=ax, scatter_kws=dict(picker=5))
-
+plt.gca().set_xlabel('Package age (days)')
 if outfile:
     plt.savefig(outfile)
 else:
