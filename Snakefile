@@ -8,7 +8,7 @@ packages = set(p["name"] for p in repodata["packages"].values())
 rule all:
     input:
         expand("plots/{plot}.pdf",
-               plot=["downloads", "ecosystems", "downloads_violin"])
+               plot=["downloads", "ecosystems", "downloads_violin", "age-vs-downloads"])
 
 
 
