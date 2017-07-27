@@ -105,3 +105,14 @@ rule contributions_plot:
         "envs/analysis.yaml"
     script:
         "scripts/plot-contributions.py"
+
+rule plot_age_vs_downloads:
+    input:
+        log="git-log/parsed-log.tsv",
+        pkg="package-data/all.tsv"
+    output:
+        "plots/age-vs-downloads.pdf"
+    conda:
+        "envs/analysis.yaml"
+    script:
+        "scripts/plot-age-vs-downloads.py"
