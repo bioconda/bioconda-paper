@@ -30,6 +30,9 @@ df['time'] -= pd.Timestamp(datetime.datetime.now())
 df['days'] = df.dropna().time.apply(lambda x: -x.days)
 df['log10(downloads)'] = np.log10(df['downloads'] + 1)
 
+# note we have to dropna ahead of time so that when interactively picking
+# points, the event ind matches the df ind
+df = df.dropna()
 
 def callback(event):
     print(df.iloc[event.ind])
@@ -38,9 +41,7 @@ def callback(event):
 fig = plt.figure()
 ax = fig.add_subplot(111)
 
-# note we have to dropna ahead of time so that when interactively picking
-# points, the event ind matches the df ind
-sns.regplot('days', 'log10(downloads)', df.dropna(), ax=ax, scatter_kws=dict(picker=5))
+sns.regplot('days', 'log10(downloads)', df, ax=ax, scatter_kws=dict(picker=5))
 
 if outfile:
     plt.savefig(outfile)
