@@ -1,14 +1,20 @@
 import seaborn as sns
 import os
 from matplotlib import pyplot as plt
-import pandas as pd
+import datetime
 
+sns.set_style('white')
 
-df = pd.read_table(snakemake.input[0])
+infile = snakemake.input[0]
+outfile = snakemake.output[0]
 
-df[["time", "cumulative_authors", "cumulative_recipes"]].plot(x="time",
-                                                              subplots=True,
-                                                              sharex=True,
-                                                              layout=(2, 1))
-sns.despine()
-plt.savefig(snakemake.output[0], bbox_inches="tight")
+df = pandas.read_table(infile)
+fig = plt.figure(figsize=(6, 8))
+ax1 = fig.add_subplot(2, 1, 1)
+ax2 = fig.add_subplot(2, 1, 2)
+df.plot('time', 'cumulative_authors', ax=ax1)
+df.plot('time', 'cumulative_recipes', ax=ax2)
+ax1.set_ylabel('Number of unique authors')
+ax2.set_ylabel('Number of unique recipes')
+fig.tight_layout()
+fig.savefig(outfile)

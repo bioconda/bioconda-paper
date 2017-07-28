@@ -10,7 +10,9 @@ rule all:
         expand("plots/{plot}.pdf",
                plot=["downloads",
                      "ecosystems",
-                     "contributions"])
+                     "contributions",
+                     "downloads_violin",
+                     "age-vs-downloads"])
 
 
 
@@ -48,9 +50,10 @@ rule git_log:
     input:
         "bioconda-recipes/.git/index"
     output:
-        "git/bioconda-recipes.log"
+        "git-log/bioconda-recipes.log"
     shell:
-        '(cd bioconda-recipes && git pull > /dev/null && '
+        '(cd bioconda-recipes && git pull); '
+        '(cd bioconda-recipes && '
         'git log '
         '--pretty=format:'
         '"%h\t%aN\t%aI" '
@@ -78,7 +81,8 @@ rule plot_downloads:
     input:
         "package-data/all.tsv"
     output:
-        "plots/downloads.pdf"
+        "plots/downloads.pdf",
+        "plots/downloads_violin.pdf",
     conda:
         "envs/analysis.yaml"
     script:
@@ -96,13 +100,35 @@ rule plot_ecosystems:
         "scripts/plot-ecosystems.py"
 
 
-
-rule contributions_plot:
+rule parse_git_log:
     input:
-        "git/contributions.tsv"
+        "git-log/bioconda-recipes.log"
+    output:
+        "git-log/parsed-log.tsv"
+    conda:
+        "envs/analysis.yaml"
+    script:
+        "scripts/parse-log.py"
+
+
+rule plot_contributions:
+    input:
+        "git-log/parsed-log.tsv"
     output:
         "plots/contributions.pdf"
     conda:
         "envs/analysis.yaml"
     script:
         "scripts/plot-contributions.py"
+
+
+rule plot_age_vs_downloads:
+    input:
+        log="git-log/parsed-log.tsv",
+        pkg="package-data/all.tsv"
+    output:
+        "plots/age-vs-downloads.pdf"
+    conda:
+        "envs/analysis.yaml"
+    script:
+        "scripts/plot-age-vs-downloads.py"
