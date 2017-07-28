@@ -4,7 +4,7 @@ import numpy as np
 import seaborn as sns
 import pandas as pd
 
-sns.set_style('white')
+sns.set_style('ticks')
 
 try:
     log = snakemake.input.log
@@ -43,6 +43,8 @@ ax = fig.add_subplot(111)
 
 sns.regplot('days', 'log10(downloads)', df, ax=ax, scatter_kws=dict(picker=5))
 plt.gca().set_xlabel('Package age (days)')
+sns.despine()
+
 if outfile:
     plt.savefig(outfile)
 else:
