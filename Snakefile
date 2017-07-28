@@ -8,7 +8,9 @@ packages = set(p["name"] for p in repodata["packages"].values())
 rule all:
     input:
         expand("plots/{plot}.pdf",
-               plot=["downloads", "ecosystems"])
+               plot=["downloads",
+                     "ecosystems",
+                     "contributions"])
 
 
 
@@ -32,10 +34,10 @@ rule collect_package_data:
         "envs/analysis.yaml"
     script:
         "scripts/collect-pkg-data.py"
-        
+
 
 rule clone:
-    output: 
+    output:
         "bioconda-recipes/.git/index"
     shell:
         "rm -rf bioconda-recipes && "
@@ -45,10 +47,10 @@ rule clone:
 rule git_log:
     input:
         "bioconda-recipes/.git/index"
-    output: 
-        "git-log/bioconda-recipes.log"
+    output:
+        "git/bioconda-recipes.log"
     shell:
-        '(cd bioconda-recipes && git pull && '
+        '(cd bioconda-recipes && git pull > /dev/null && '
         'git log '
         '--pretty=format:'
         '"%h\t%aN\t%aI" '
@@ -59,6 +61,17 @@ rule git_log:
 
         'recipes/*) '
         '> {output}'
+
+
+rule collect_contributions:
+    input:
+        "git/bioconda-recipes.log"
+    output:
+        "git/contributions.tsv"
+    conda:
+        "envs/analysis.yaml"
+    script:
+        "scripts/collect-contributions.py"
 
 
 rule plot_downloads:
@@ -82,12 +95,14 @@ rule plot_ecosystems:
     script:
         "scripts/plot-ecosystems.py"
 
-        
+
 
 rule contributions_plot:
-    input: 
-        "git-log/bioconda-recipes.log"
-    output: 
+    input:
+        "git/contributions.tsv"
+    output:
         "plots/contributions.pdf"
-    script: 
+    conda:
+        "envs/analysis.yaml"
+    script:
         "scripts/plot-contributions.py"
