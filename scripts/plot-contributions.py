@@ -3,6 +3,7 @@ import os
 from matplotlib import pyplot as plt
 import datetime
 import pandas as pd
+import matplotlib.dates as mdates
 
 sns.set_style('ticks')
 
@@ -10,13 +11,19 @@ infile = snakemake.input[0]
 outfile = snakemake.output[0]
 
 df = pd.read_table(infile)
-fig = plt.figure(figsize=(6, 8))
+df["time"] = pd.to_datetime(df["time"])
+fig = plt.figure(figsize=(4, 4))
 ax1 = fig.add_subplot(2, 1, 1)
 ax2 = fig.add_subplot(2, 1, 2)
-df.plot('time', 'cumulative_authors', ax=ax1)
-df.plot('time', 'cumulative_recipes', ax=ax2)
-ax1.set_ylabel('Number of unique authors')
-ax2.set_ylabel('Number of unique recipes')
+df.plot('time', 'cumulative_authors', ax=ax1, legend=False)
+df.plot('time', 'cumulative_recipes', ax=ax2, legend=False)
+ax1.set_ylabel('authors')
+ax2.set_ylabel('recipes')
+ax1.set_xlabel('')
+ax1.set_xticklabels([])
+ax2.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
+for tick in ax2.get_xticklabels():
+    tick.set_rotation(45)
 sns.despine()
 fig.tight_layout()
 fig.savefig(outfile)

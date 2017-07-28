@@ -4,7 +4,7 @@ import pandas as pd
 
 packages = pd.read_table(snakemake.input[0])
 sns.set_style("ticks")
-sns.set_palette="Set1")
+sns.set_palette("Set1")
 
 sns.countplot(x="ecosystem", data=packages)
 plt.ylabel("count (total: {})".format(packages.shape[0]))

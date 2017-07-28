@@ -28,7 +28,7 @@ df = d.set_index('package')
 df['time'] = pd.to_datetime(e)
 df['time'] -= pd.Timestamp(datetime.datetime.now())
 df['days'] = df.dropna().time.apply(lambda x: -x.days)
-df['log10(downloads)'] = np.log10(df['downloads'] + 1)
+df['log10 downloads'] = np.log10(df['downloads'] + 1)
 
 # note we have to dropna ahead of time so that when interactively picking
 # points, the event ind matches the df ind
@@ -41,7 +41,7 @@ def callback(event):
 fig = plt.figure()
 ax = fig.add_subplot(111)
 
-sns.regplot('days', 'log10(downloads)', df, ax=ax, scatter_kws=dict(picker=5))
+sns.regplot('days', 'log10 downloads', df, ax=ax, scatter_kws=dict(picker=5, s=2, color='k', alpha=0.6))
 plt.gca().set_xlabel('Package age (days)')
 sns.despine()
 

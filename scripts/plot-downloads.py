@@ -31,11 +31,11 @@ plt.savefig(snakemake.output[0], bbox_inches="tight")
 # some Perl, Python, R never downloaded).
 #
 # Take the log10 ahead of time so the KDE works well.
-packages['log10(downloads)'] = np.log10(packages.downloads + 1)
+packages['log10 downloads'] = np.log10(packages.downloads + 1)
 fig = plt.figure()
 sns.violinplot(
     x="ecosystem",
-    y="log10(downloads)",
+    y="log10 downloads",
     alpha=0.5,
     cut=0,
     data=packages)

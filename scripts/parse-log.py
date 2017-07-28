@@ -80,4 +80,5 @@ for i in sorted(gen(), key=lambda x: x.time):
 df = pandas.DataFrame(dfs)
 df['cumulative_authors'] = df.new_author.astype(int).cumsum()
 df['cumulative_recipes'] = df.nadded.cumsum()
+df["time"] = pandas.to_datetime(df["time"])
 df.to_csv(outfile, sep='\t')
