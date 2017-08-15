@@ -19,6 +19,8 @@ rule all:
 rule get_package_data:
     output:
         "package-data/{package}.json"
+    conda:
+        "envs/analysis.yaml"
     resources:
         api_requests=1
     shell:
