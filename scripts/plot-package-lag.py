@@ -3,6 +3,7 @@ from distutils.version import LooseVersion
 import pickle
 import json
 import difflib
+import distance
 import glob
 import os
 
@@ -43,7 +44,7 @@ def load_ubuntu_packages(force=True):
                 description = pstring.split(" ", 1)[1]
                 ubuntu_packages[name] = (version, description)
         print("Done parsing")
-        print(ubuntu_packages)
+        # print(ubuntu_packages)
         pickle.dump(ubuntu_packages, open("ubuntu_packages.pickle", "wb"))
         return ubuntu_packages 
 
@@ -59,6 +60,24 @@ def normalize(vnr):
         _, vnr  = vnr.split(":")
     return vnr
 
+
+def split_lc(text):
+    """Split and clean a description for Jaccrad similarity omputation.
+    """
+    # define filling words that need to be removed
+    exclude = ("the", "if", "with", "and", "that", "can", "a", "is",
+               "to", "it", "for", "an", "of", "in", "or")
+    # remove punctuation etc and split up composita
+    words = [w.strip().lower() for w in text.split()]
+    result = []
+    for word in words:
+        if "-" in word:
+            result.extend(word.split("-"))
+        else:
+            result.append(word)
+    # filter out filler words
+    return [w for w in result if w not in exclude]
+    
 
 def compare_package_versions (bioconda_packages, ubuntu_packages):
     bigger = 0
@@ -87,16 +106,38 @@ def compare_package_versions (bioconda_packages, ubuntu_packages):
                 # lv_bc = parse_version(bc_version).base_version
                 # ub_version = ubuntu_packages[bc_name]
                 # lv_ub = parse_version(ub_version).base_version
-                lv_bc = LooseVersion(bc_version) 
-                ub_version = ubuntu_packages[bc_name]
+                lv_bc = LooseVersion(bc_version)
+                ub_version, ub_description = ubuntu_packages[bc_name]
                 lv_ub = LooseVersion(normalize(ub_version))
+                
                 if lv_bc > lv_ub:
                     bigger += 1
+                    d = distance.jaccard(split_lc(bc_summary), split_lc(ub_description))
+                    # if r < 0.3:
+                    if d > 0.9:
+                        print("     DISSIMMILAR")
+                        print(f"    xxx> BC: {bc_summary}")
+                        print(f"    xxx> UB: {ub_description}")
+                        print(f"    xxx> I think they are not the same package.")
+
                 elif lv_bc == lv_ub:
                     same += 1
                 else:
-                    smaller += 1
                     print(f"  -> Ubuntu wins: {bc_name}, {lv_bc} ({bc_version}) < {lv_ub} ({ub_version})")
+                    # print(bc_summary, split_lc(bc_summary))
+                    # input()
+                    d = distance.jaccard(split_lc(bc_summary), split_lc(ub_description))
+                    # if r < 0.3:
+                    if d > 0.9:
+                        print(f"    xxx> BC: {bc_summary}")
+                        print(f"    xxx> UB: {ub_description}")
+                        print(f"    xxx> I think they are not the same package.")
+                        not_in_ubuntu += 1
+                    else:
+                        print(f"      -> BC: {bc_summary}")
+                        print(f"      -> UB: {ub_description}")
+                        print(f"      -> I think they look alike.")
+                        smaller += 1
             except (AttributeError, TypeError):
                 print("Error:", bc_version, ubuntu_packages[bc_name])
                 errors += 1
