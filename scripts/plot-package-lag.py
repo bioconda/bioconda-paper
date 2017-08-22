@@ -11,6 +11,13 @@ from metadata import parse_metadata
 
 
 def load_bioconda_packages(force=False):
+    """Load bioconda package information from the meta.yaml files.
+
+    Pickle the result to improve access for subsequent runs.
+
+    Arguments:
+        force (bool): Overwrite an existing pickled file instead of loading it.
+    """
     if os.path.exists("bioconda_packages.pickle") and not force:
         bioconda_packages = pickle.load(open("bioconda_packages.pickle", "rb"))
         print("Found and loaded pickled bioconda packages")
@@ -22,6 +29,14 @@ def load_bioconda_packages(force=False):
 
 
 def load_ubuntu_packages(force=True):
+    """Parse ubuntu package information from a file genrated
+    with `apt-cache show | grep '^Package\|^Description-en\|^Version'` on ubuntu 16.04,
+
+    Pickle the result to improve access for subsequent runs.
+
+    Arguments:
+        force (bool): Overwrite an existing pickled file instead of loading it.
+    """
     if os.path.exists("ubuntu_packages.pickle") and not force:
         ubuntu_packages = pickle.load(open("ubuntu_packages.pickle", "rb"))
         print("Found and loaded pickled ubuntu packages")
@@ -34,8 +49,8 @@ def load_ubuntu_packages(force=True):
         package_strings = ubuntu_data.split("\n")
         
         for index in range(len(package_strings)-1):
+            # parse blocks of three subsequent lines
             pstring = package_strings[index]
-            # print(pstring)
             if pstring.startswith("Package"):
                 name = pstring.split(" ")[1]
             elif pstring.startswith("Version"):
@@ -43,8 +58,7 @@ def load_ubuntu_packages(force=True):
             elif pstring.startswith("Description"):
                 description = pstring.split(" ", 1)[1]
                 ubuntu_packages[name] = (version, description)
-        print("Done parsing")
-        # print(ubuntu_packages)
+        # print("Done parsing")
         pickle.dump(ubuntu_packages, open("ubuntu_packages.pickle", "wb"))
         return ubuntu_packages 
 
@@ -64,7 +78,8 @@ def normalize(vnr):
 
 
 def split_lc(text):
-    """Split and clean a description for Jaccrad similarity omputation.
+    """Split and clean a description and converti it to lower case 
+    for Jaccard similarity computation.
     """
     # define filling words that need to be removed
     exclude = ("the", "if", "with", "and", "that", "can", "a", "is",
@@ -82,9 +97,10 @@ def split_lc(text):
     
 
 def compare_package_versions (bioconda_packages, ubuntu_packages):
-    bigger = 0
-    same = 0
-    smaller = 0
+    
+    newer_in_bioconda = 0
+    equal_in_both = 0
+    newer_in_ubuntu = 0
     errors = 0
     not_in_ubuntu = 0
     contained = 0
@@ -133,17 +149,17 @@ def compare_package_versions (bioconda_packages, ubuntu_packages):
                 continue
 
             if lv_bc > lv_ub:
-                bigger += 1
+                newer_in_bioconda += 1
                 d = distance.jaccard(split_lc(bc_summary), split_lc(ub_description))
                 # if r < 0.3:
                 if d > 0.9:
                     print("     DISSIMMILAR")
                     print(f"    xxx> BC: {bc_summary}")
                     print(f"    xxx> UB: {ub_description}")
-                    print(f"    xxx> I think they are not the same package.")
+                    print(f"    xxx> I think they are not the equal_in_both package.")
 
             elif lv_bc == lv_ub:
-                same += 1
+                equal_in_both += 1
             else:
                 print(f"  -> Ubuntu wins: {bc_name}, {lv_bc} ({bc_version}) < {lv_ub} ({ub_version})")
                 # print(bc_summary, split_lc(bc_summary))
@@ -153,19 +169,21 @@ def compare_package_versions (bioconda_packages, ubuntu_packages):
                 if d > 0.9:
                     print(f"    xxx> BC: {bc_summary}")
                     print(f"    xxx> UB: {ub_description}")
-                    print(f"    xxx> I think they are not the same package.")
+                    print(f"    xxx> I think they are not the equal_in_both package.")
                     not_in_ubuntu += 1
                 else:
                     print(f"      -> BC: {bc_summary}")
                     print(f"      -> UB: {ub_description}")
                     print(f"      -> I think they look alike.")
-                    smaller += 1
+                    newer_in_ubuntu += 1
             # except (AttributeError, TypeError):
             #     print("Error:", bc_version, ubuntu_packages[bc_name])
             #     raise
             #     errors += 1
         else:
-            not_in_ubuntu += 1
+            # find names that are contained within each other
+            # example: httpretty (bioconda) is available as 
+            # python-httpretty and python3-httpretty
             unmatched.append(bc_name)
             candidates = []
             for ub_name in ubuntu_packages:
@@ -173,26 +191,23 @@ def compare_package_versions (bioconda_packages, ubuntu_packages):
                     candidates.append(ub_name)
             if candidates:
                 if len(candidates) <= 5:
-                    print(f"Found containment candidates for {bc_name}: {candidates}")
+                    print(f"Found containment candidates for {bc_name} {bioconda_packages[bc_name][0]}: {candidates}")
                 prefixes = ["python-", "python3-", "r-cran-", "r-cran-r", "ruby-"]
-                print(set(candidates))
-                print(set([prefix + bc_name for prefix in prefixes]))
+                # print(set(candidates))
+                # print(set([prefix + bc_name for prefix in prefixes]))
                 shared = set([prefix + bc_name for prefix in prefixes]) & set(candidates)
-                print(shared)
+                # print(shared)
                 if shared:
-                    print(f"Best candidates are: {shared}")
+                    # print(f"Best candidates are: {shared}")
+                    print(f"Best candidates are: {[(s, ubuntu_packages[s][0]) for s in shared]}")
                     contained += 1
-                
-            #     r = difflib.SequenceMatcher(None, bc_name, ub_name).ratio()
-            #     if r > 0.7:
-            #         candidates.append((ub_name, r))
-            # if candidates:
-            #     print(f"  {bc_name} Not found in Ubuntu packages, but {candidates} are similar")
+            else:
+                not_in_ubuntu += 1
     
     print("\n\nStats:")
-    print(f"newer in bioconda: {bigger}")
-    print(f"newer in ubuntu: {smaller}")
-    print(f"same: {same}")
+    print(f"newer in bioconda: {newer_in_bioconda}")
+    print(f"newer in ubuntu: {newer_in_ubuntu}")
+    print(f"same version in both: {equal_in_both}")
     print(f"errors: {errors}")
     print(f"contained: {contained}")
     print(f"not in ubuntu: {not_in_ubuntu}")
