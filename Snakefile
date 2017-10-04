@@ -7,7 +7,7 @@ packages = set(p["name"] for p in repodata["packages"].values())
 
 rule all:
     input:
-        "figs/fig1.pdf",
+        expand("figs/fig{f}.pdf", f=[1, 2]),
         expand("plots/{plot}.svg",
                plot=["downloads",
                      "ecosystems",
@@ -119,7 +119,7 @@ rule plot_dag:
     shell:
         "neato -Tsvg -o {output} "
         '-Nlabel="" -Nstyle=filled -Nfillcolor="#3333335f" '
-        '-Ecolor="#3333335f" -Nwidth=0.2 -LC10 '
+        '-Ecolor="#3333335f" -Nwidth=0.2 -LC10 -Gsize="12,12" '
         "-Nshape=circle -Npenwidth=0 {input}"
 
 
@@ -182,6 +182,18 @@ rule fig1:
         "envs/analysis.yaml"
     script:
         "scripts/fig1.py"
+
+
+rule fig2:
+    input:
+        workflow="plots/workflow.svg",
+        dag="plots/dag.svg"
+    output:
+        "figs/fig2.svg"
+    conda:
+        "envs/analysis.yaml"
+    script:
+        "scripts/fig2.py"
 
 
 rule convert_svg:
