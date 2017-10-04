@@ -7,13 +7,16 @@ packages = set(p["name"] for p in repodata["packages"].values())
 
 rule all:
     input:
-        expand("plots/{plot}.pdf",
+        expand("plots/{plot}.svg",
                plot=["downloads",
                      "ecosystems",
                      "contributions",
                      "downloads_violin",
-                     "age-vs-downloads"])
+                     "age-vs-downloads",
+                     "dag"])
 
+
+############# Collect data ##############
 
 
 rule get_package_data:
@@ -79,27 +82,16 @@ rule collect_contributions:
         "scripts/collect-contributions.py"
 
 
-rule plot_downloads:
+rule get_dag:
     input:
-        "package-data/all.tsv"
+        "bioconda-recipes/.git/index"
     output:
-        "plots/downloads.pdf",
-        "plots/downloads_violin.pdf",
-    conda:
-        "envs/analysis.yaml"
-    script:
-        "scripts/plot-downloads.py"
-
-
-rule plot_ecosystems:
-    input:
-        "package-data/all.tsv"
-    output:
-        "plots/ecosystems.pdf"
-    conda:
-        "envs/analysis.yaml"
-    script:
-        "scripts/plot-ecosystems.py"
+        "dag/dag.dot"
+    shell:
+        "cd bioconda-recipes; "
+        "git pull; "
+        "bioconda-utils dag --hide-singletons --format dot "
+        "recipes config.yml > ../{output}"
 
 
 rule parse_git_log:
@@ -113,11 +105,51 @@ rule parse_git_log:
         "scripts/parse-log.py"
 
 
+################# Plots #################
+
+
+rule plot_dag:
+    input:
+        "dag/dag.dot"
+    output:
+        "plots/dag.svg"
+    conda:
+        "envs/analysis.yaml"
+    shell:
+        "twopi -Tsvg -o {output} "
+        '-Nlabel="" -Nstyle=filled -Nfillcolor="#3333335f" '
+        '-Ecolor="#3333335f" '
+        "-Nshape=circle -Npenwidth=0 {input}"
+
+
+rule plot_downloads:
+    input:
+        "package-data/all.tsv"
+    output:
+        "plots/downloads.svg",
+        "plots/downloads_violin.svg",
+    conda:
+        "envs/analysis.yaml"
+    script:
+        "scripts/plot-downloads.py"
+
+
+rule plot_ecosystems:
+    input:
+        "package-data/all.tsv"
+    output:
+        "plots/ecosystems.svg"
+    conda:
+        "envs/analysis.yaml"
+    script:
+        "scripts/plot-ecosystems.py"
+
+
 rule plot_contributions:
     input:
         "git-log/parsed-log.tsv"
     output:
-        "plots/contributions.pdf"
+        "plots/contributions.svg"
     conda:
         "envs/analysis.yaml"
     script:
@@ -129,8 +161,11 @@ rule plot_age_vs_downloads:
         log="git-log/parsed-log.tsv",
         pkg="package-data/all.tsv"
     output:
-        "plots/age-vs-downloads.pdf"
+        "plots/age-vs-downloads.svg"
     conda:
         "envs/analysis.yaml"
     script:
         "scripts/plot-age-vs-downloads.py"
+
+
+########### Figures #############
