@@ -117,9 +117,9 @@ rule plot_dag:
     conda:
         "envs/analysis.yaml"
     shell:
-        "twopi -Tsvg -o {output} "
+        "neato -Tsvg -o {output} "
         '-Nlabel="" -Nstyle=filled -Nfillcolor="#3333335f" '
-        '-Ecolor="#3333335f" '
+        '-Ecolor="#3333335f" -Nwidth=0.2 -LC10 '
         "-Nshape=circle -Npenwidth=0 {input}"
 
 
