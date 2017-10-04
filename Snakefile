@@ -117,10 +117,10 @@ rule plot_dag:
     conda:
         "envs/analysis.yaml"
     shell:
-        "neato -Tsvg -o {output} "
+        "set +o pipefail; ccomps -zX#0 {input} | neato -Tsvg -o {output} "
         '-Nlabel="" -Nstyle=filled -Nfillcolor="#1f77b4" '
         '-Ecolor="#3333335f" -Nwidth=0.2 -LC10 -Gsize="12,12" '
-        "-Nshape=circle -Npenwidth=0 {input}"
+        "-Nshape=circle -Npenwidth=0"
 
 
 rule plot_downloads:
