@@ -4,8 +4,8 @@ channels:
   - defaults
 dependencies:
   - pandas ==0.20.3
-  - seaborn ==0.8.0
-  - matplotlib ==2.0.2
+  - seaborn ==0.8.1
+  - matplotlib ==2.1.0
   - curl ==7.54.1
   - git >=2.6.4
   - graphviz ==2.38.0

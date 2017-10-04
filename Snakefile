@@ -7,7 +7,7 @@ packages = set(p["name"] for p in repodata["packages"].values())
 
 rule all:
     input:
-        "figs/fig1.svg",
+        "figs/fig1.pdf",
         expand("plots/{plot}.svg",
                plot=["downloads",
                      "ecosystems",
@@ -182,3 +182,14 @@ rule fig1:
         "envs/analysis.yaml"
     script:
         "scripts/fig1.py"
+
+
+rule convert_svg:
+    input:
+        "{prefix}.svg"
+    output:
+        "{prefix}.{fmt,(pdf|png)}"
+    conda:
+        "envs/cairosvg.yaml"
+    shell:
+        "cairosvg -f {wildcards.fmt} {input} -o {output}"
