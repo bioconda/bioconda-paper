@@ -118,7 +118,7 @@ rule plot_dag:
         "envs/analysis.yaml"
     shell:
         "neato -Tsvg -o {output} "
-        '-Nlabel="" -Nstyle=filled -Nfillcolor="#3333335f" '
+        '-Nlabel="" -Nstyle=filled -Nfillcolor="#1f77b4" '
         '-Ecolor="#3333335f" -Nwidth=0.2 -LC10 -Gsize="12,12" '
         "-Nshape=circle -Npenwidth=0 {input}"
 
