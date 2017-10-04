@@ -8,6 +8,7 @@ import common
 plt.figure(figsize=(4,2))
 
 packages = pd.read_table(snakemake.input[0])
+total_downloads = packages["downloads"].sum()
 
 sns.boxplot(x="ecosystem",
             y="downloads",
@@ -21,7 +22,7 @@ sns.stripplot(x="ecosystem",
               jitter=True,
               alpha=0.5)
 plt.gca().set_yscale("log")
-plt.ylabel("downloads (total: {})".format(packages["downloads"].sum()))
+plt.ylabel("downloads (total: {})".format(total_downloads))
 sns.despine()
 
 
@@ -41,5 +42,7 @@ sns.violinplot(
     alpha=0.5,
     cut=0,
     data=packages)
+plt.text(plt.xlim()[1], plt.ylim()[1], "total: {}".format(total_downloads),
+         horizontalalignment="right", verticalalignment="top")
 sns.despine()
 plt.savefig(snakemake.output[1], bbox_inches="tight")
