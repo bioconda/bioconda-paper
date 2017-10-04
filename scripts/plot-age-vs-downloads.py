@@ -4,7 +4,7 @@ import numpy as np
 import seaborn as sns
 import pandas as pd
 
-sns.set_style('ticks')
+import common
 
 try:
     log = snakemake.input.log

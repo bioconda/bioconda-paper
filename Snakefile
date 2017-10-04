@@ -7,6 +7,7 @@ packages = set(p["name"] for p in repodata["packages"].values())
 
 rule all:
     input:
+        "figs/fig1.svg",
         expand("plots/{plot}.svg",
                plot=["downloads",
                      "ecosystems",
@@ -169,3 +170,15 @@ rule plot_age_vs_downloads:
 
 
 ########### Figures #############
+
+rule fig1:
+    input:
+        contributions="plots/contributions.svg",
+        downloads="plots/downloads_violin.svg",
+        ecosystems="plots/ecosystems.svg"
+    output:
+        "figs/fig1.svg"
+    conda:
+        "envs/analysis.yaml"
+    script:
+        "scripts/fig1.py"

@@ -5,14 +5,14 @@ import datetime
 import pandas as pd
 import matplotlib.dates as mdates
 
-sns.set_style('ticks')
+import common
 
 infile = snakemake.input[0]
 outfile = snakemake.output[0]
 
 df = pd.read_table(infile)
 df["time"] = pd.to_datetime(df["time"])
-fig = plt.figure(figsize=(4, 4))
+fig = plt.figure(figsize=(4,3))
 ax1 = fig.add_subplot(2, 1, 1)
 ax2 = fig.add_subplot(2, 1, 2)
 df.plot('time', 'cumulative_authors', ax=ax1, legend=False)

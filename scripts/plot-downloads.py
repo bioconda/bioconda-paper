@@ -3,10 +3,11 @@ import seaborn as sns
 import pandas as pd
 import numpy as np
 
-packages = pd.read_table(snakemake.input[0])
+import common
 
-sns.set_style("ticks")
-sns.set_palette("Set1")
+plt.figure(figsize=(4,2))
+
+packages = pd.read_table(snakemake.input[0])
 
 sns.boxplot(x="ecosystem",
             y="downloads",
@@ -32,7 +33,8 @@ plt.savefig(snakemake.output[0], bbox_inches="tight")
 #
 # Take the log10 ahead of time so the KDE works well.
 packages['log10 downloads'] = np.log10(packages.downloads + 1)
-fig = plt.figure()
+
+plt.figure(figsize=(4,2))
 sns.violinplot(
     x="ecosystem",
     y="log10 downloads",
@@ -40,4 +42,4 @@ sns.violinplot(
     cut=0,
     data=packages)
 sns.despine()
-fig.savefig(snakemake.output[1], bbox_inches="tight")
+plt.savefig(snakemake.output[1], bbox_inches="tight")
