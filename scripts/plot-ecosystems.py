@@ -7,6 +7,8 @@ import common
 plt.figure(figsize=(4,2))
 
 packages = pd.read_table(snakemake.input[0])
+packages.loc[packages.ecosystem == 'Bioconductor', 'ecosystem'] = 'Bioconductor/R'
+packages.loc[packages.ecosystem == 'R', 'ecosystem'] = 'Bioconductor/R'
 
 sns.countplot(x="ecosystem", data=packages)
 plt.ylabel("count")

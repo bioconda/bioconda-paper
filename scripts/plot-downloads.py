@@ -9,6 +9,8 @@ plt.figure(figsize=(4,2))
 
 packages = pd.read_table(snakemake.input[0])
 total_downloads = packages["downloads"].sum()
+packages.loc[packages.ecosystem == 'Bioconductor', 'ecosystem'] = 'Bioconductor/R'
+packages.loc[packages.ecosystem == 'R', 'ecosystem'] = 'Bioconductor/R'
 
 sns.boxplot(x="ecosystem",
             y="downloads",
