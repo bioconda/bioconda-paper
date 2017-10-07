@@ -1,3 +1,5 @@
+import os
+import glob
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
@@ -6,9 +8,13 @@ import numpy as np
 import common
 
 plt.figure(figsize=(4,2))
-
 packages = pd.read_table(snakemake.input[0])
 total_downloads = packages["downloads"].sum()
+packages.loc[packages.ecosystem == 'Bioconductor', 'ecosystem'] = 'Bioconductor/R'
+packages.loc[packages.ecosystem == 'R', 'ecosystem'] = 'Bioconductor/R'
+
+# In case we want to filter downloads by whether or not a current recipe exists
+recipes = set(map(os.path.basename, glob.glob('bioconda-recipes/recipes/*')))
 
 sns.boxplot(x="ecosystem",
             y="downloads",

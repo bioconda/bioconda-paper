@@ -125,7 +125,7 @@ rule plot_dag:
 
 rule plot_downloads:
     input:
-        "package-data/all.tsv"
+        "package-data/all.tsv",
     output:
         "plots/downloads.svg",
         "plots/downloads_violin.svg",
@@ -137,7 +137,7 @@ rule plot_downloads:
 
 rule plot_ecosystems:
     input:
-        "package-data/all.tsv"
+        "package-data/all.tsv",
     output:
         "plots/ecosystems.svg"
     conda:
@@ -148,7 +148,7 @@ rule plot_ecosystems:
 
 rule plot_contributions:
     input:
-        "git-log/parsed-log.tsv"
+        "git-log/parsed-log.tsv",
     output:
         "plots/contributions.svg"
     conda:
