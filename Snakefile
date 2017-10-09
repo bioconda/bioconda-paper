@@ -137,7 +137,8 @@ rule plot_downloads:
 
 rule plot_ecosystems:
     input:
-        "package-data/all.tsv",
+        "bioconda-recipes/.git/index",
+        pkg_data="package-data/all.tsv"
     output:
         "plots/ecosystems.svg"
     conda:
@@ -167,6 +168,20 @@ rule plot_age_vs_downloads:
         "envs/analysis.yaml"
     script:
         "scripts/plot-age-vs-downloads.py"
+
+
+########### Tables ##############
+
+
+rule stats:
+    input:
+        "package-data/all.tsv"
+    output:
+        "package-data/stats.tsv"
+    conda:
+        "envs/analysis.yaml"
+    script:
+        "scripts/stats.py"
 
 
 ########### Figures #############
