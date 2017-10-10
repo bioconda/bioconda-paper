@@ -2610,5 +2610,5 @@ x	yanc	Yet another nose colorer	https://github.com/0compute/yanc
  	yara	Yara is an exact tool for aligning DNA sequencing reads to reference genomes.	https://github.com/seqan/seqan/blob/develop/apps/yara/README.rst
  	yass	YASS is a genomic similarity search tool, for nucleic (DNA/RNA) sequences in fasta or plain text format.	http://bioinfo.lifl.fr/yass/
  	zagros	zagros is a motif-discovery tool for CLIP-Seq data.	http://smithlabresearch.org/software/zagros/
- 	zeroc-ice	Ice is a comprehensive RPC framework that helps you network your software with minimal effort.	https://github.com/zeroc-ice
+x	zeroc-ice	Ice is a comprehensive RPC framework that helps you network your software with minimal effort.	https://github.com/zeroc-ice
  	zifa	Dimensionality reduction for zero-inflated single-cell gene expression analysis	https://github.com/epierson9/ZIFA
