@@ -5,6 +5,7 @@ import pandas as pd
 packages = []
 ndownloads = []
 ecosystem = []
+versions = []
 for path in snakemake.input:
     with open(path) as f:
         meta = json.load(f)
@@ -12,6 +13,7 @@ for path in snakemake.input:
         name = meta["full_name"].split("/")[1]
         assert name not in packages, "duplicate package: {}".format(name)
         packages.append(name)
+        versions.append(len(meta["versions"]))
 
         if name.startswith("bioconductor-"):
             ecosystem.append("Bioconductor")
@@ -35,8 +37,9 @@ for path in snakemake.input:
 packages = pd.DataFrame({
     "package": packages,
     "downloads": ndownloads,
-    "ecosystem": ecosystem
-}, columns=["package", "ecosystem", "downloads"])
+    "ecosystem": ecosystem,
+    "versions": versions
+}, columns=["package", "ecosystem", "downloads", "versions"])
 
 packages.sort_values("downloads", ascending=False, inplace=True)
 

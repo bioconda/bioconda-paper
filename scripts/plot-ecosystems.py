@@ -8,7 +8,7 @@ import common
 
 plt.figure(figsize=(4,2))
 
-packages = pd.read_table(snakemake.input[0])
+packages = pd.read_table(snakemake.input.pkg_data)
 packages.loc[packages.ecosystem == 'Bioconductor', 'ecosystem'] = 'Bioconductor/R'
 packages.loc[packages.ecosystem == 'R', 'ecosystem'] = 'Bioconductor/R'
 recipes = set(map(os.path.basename, glob.glob('bioconda-recipes/recipes/*')))
