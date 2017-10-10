@@ -968,7 +968,7 @@ x	glpk	GNU Linear Programming Kit	https://www.gnu.org/software/glpk/
  	gmtk	A publicly available toolkit for rapidly prototyping statistical models using dynamic graphical models (DGMs) and dynamic Bayesian networks (DBNs)	http://melodi.ee.washington.edu/gmtk/
 x	gnu-getopt	Command-line option parsing library	http://software.frodo.looijaard.name/getopt/
 x	gnu-wget	Retrieve files using HTTP, HTTPS and FTP	http://www.gnu.org/software/wget/
- 	gnuplot-py	A Python interface to the gnuplot plotting program.	http://gnuplot-py.sourceforge.net
+x	gnuplot-py	A Python interface to the gnuplot plotting program.	http://gnuplot-py.sourceforge.net
  	goatools	Python scripts to find enrichment of GO terms	https://github.com/tanghaibao/goatools
 x	gocr	GOCR is an OCR (Optical Character Recognition) program	http://jocr.sourceforge.net/
  	goleft	goleft is a collection of bioinformatics tools distributed under MIT license in a single static binary	https://github.com/brentp/goleft
@@ -1265,7 +1265,7 @@ x	mysqlclient	Python interface to MySQL	https://github.com/PyMySQL/mysqlclient-p
  	nanosplit	Perform splitting of Oxford Nanopore sequencing data in a fail and pass dataset.	https://github.com/wdecoster/nanosplit
  	nanostat	Calculate statistics for Oxford Nanopore sequencing data and alignments	https://github.com/wdecoster/nanostat
  	nanosv	SV caller for nanopore data	https://github.com/mroosmalen/nanosv
- 	nasm	NASM, the Netwide Assembler.	http://www.nasm.us
+x	nasm	NASM, the Netwide Assembler.	http://www.nasm.us
  	nasp	The Northern Arizona SNP Pipeline (NASP)	https://github.com/TGenNorth/nasp
  	ncbi-genome-download	Download genome files from the NCBI FTP server.	https://github.com/kblin/ncbi-genome-download/
  	neptune	Neptune: Genomic Signature Discovery	https://github.com/phac-nml/neptune
@@ -1347,7 +1347,7 @@ x	parallel	GNU parallel is a shell tool for executing jobs in parallel using one
 x	pbgzip	Parallel Block GZIP	https://github.com/nh13/pbgzip
  	pbh5tools	A swiss-army knife for interrogating PacBio® HDF5 files (cmp.h5, bas.h5).	https://github.com/PacificBiosciences/pbh5tools
  	pbsim	PBSIM simulates PacBio reads	https://code.google.com/archive/p/pbsim/
- 	pdfkit	Wkhtmltopdf python wrapper to convert html to pdf using the webkit rendering engine and qt	https://pypi.python.org/pypi/pdfkit
+x	pdfkit	Wkhtmltopdf python wrapper to convert html to pdf using the webkit rendering engine and qt	https://pypi.python.org/pypi/pdfkit
  	peakachu	Peak calling tool for CLIP-seq data.	https://github.com/tbischler/PEAKachu
  	peakranger	PeakRanger is a multi-purporse software suite for analyzing next-generation sequencing (NGS) data.	http://ranger.sourceforge.net
  	peakzilla	Peakzilla identifies sites of enrichment and transcription factor binding sites from transcription factor ChIP-seq and ChIP-exo experiments at hight accuracy and resolution.	http://stark.imp.ac.at/data/peakzilla
@@ -2095,7 +2095,7 @@ x	rdflib-jsonld	rdflib extension adding JSON-LD parser and serializer	https://gi
  	regex	Alternative regular expression module, to replace re.	https://bitbucket.org/mrabarnett/mrab-regex
  	relocate2		
  	remurna	Measurement of Single-Nucleotide Polymorphism-induced Changes of RNA Conformation	https://www.ncbi.nlm.nih.gov/CBBresearch/Przytycka/index.cgi#remurna
- 	rename	Perl-powered file rename script with many helpful built-ins	http://plasmasturm.org/code/rename
+x	rename	Perl-powered file rename script with many helpful built-ins	http://plasmasturm.org/code/rename
  	repeatmasker	RepeatMasker is a program that screens DNA sequences for interspersed repeats and low complexity DNA sequences.	http://www.repeatmasker.org
  	repeatmodeler	RepeatModeler is a de-novo repeat family identification and modeling package.	http://www.repeatmasker.org/RepeatModeler.html
  	repeatscout	De novo identification of repeat families in large genomes.	http://repeatscout.bioprojects.org
