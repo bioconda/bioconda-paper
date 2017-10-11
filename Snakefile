@@ -106,6 +106,18 @@ rule parse_git_log:
         "scripts/parse-log.py"
 
 
+# This rule purposefully left off the default DAG because this needs
+# bioconda_utils + conda-build to parse recipes, which in turn need to be in
+# the root environment.
+rule collect_summaries:
+    input:
+        "bioconda-recipes/.git/index"
+    output:
+        "summary/summaries.tsv"
+    script:
+        "scripts/collect-summaries-and-urls.py"
+
+
 ################# Plots #################
 
 
