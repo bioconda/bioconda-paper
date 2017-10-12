@@ -175,7 +175,8 @@ rule plot_age_vs_downloads:
 
 rule stats:
     input:
-        "package-data/all.tsv"
+        "bioconda-recipes/.git/index",
+        pkg="package-data/all.tsv"
     output:
         "package-data/stats.tsv"
     conda:

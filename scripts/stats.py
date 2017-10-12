@@ -3,7 +3,7 @@ import pandas as pd
 import glob
 import csv
 
-packages = pd.read_table(snakemake.input[0])
+packages = pd.read_table(snakemake.input.pkg)
 
 # restrict to existing recipes
 recipes = set(map(os.path.basename, glob.glob('bioconda-recipes/recipes/*')))
