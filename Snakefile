@@ -159,6 +159,17 @@ rule plot_ecosystems:
         "scripts/plot-ecosystems.py"
 
 
+rule plot_comparison:
+    input:
+        "summary/hand-edited-summaries.tsv"
+    output:
+        "plots/pkg-count-comparison.svg"
+    conda:
+        "envs/analysis.yaml"
+    script:
+        "scripts/plot-comparison.py"
+
+
 rule plot_contributions:
     input:
         "git-log/parsed-log.tsv",
@@ -215,7 +226,8 @@ rule fig1:
 rule fig2:
     input:
         workflow="plots/workflow.svg",
-        dag="plots/dag.svg"
+        dag="plots/dag.svg",
+        comp="plots/pkg-count-comparison.svg"
     output:
         "figs/fig2.svg"
     conda:
