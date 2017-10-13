@@ -12,3 +12,4 @@ dependencies:
   - pydotplus ==2.0.2
   - svgutils ==0.2.0
   - python >=3.5
+  - pygithub ==1.34

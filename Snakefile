@@ -106,6 +106,15 @@ rule parse_git_log:
         "scripts/parse-log.py"
 
 
+rule collect_pr_data:
+    output:
+        "pr/all.tsv"
+    conda:
+        "envs/analysis.yaml"
+    script:
+        "scripts/collect-pr-data.py"
+
+
 # This rule purposefully left off the default DAG because this needs
 # bioconda_utils + conda-build to parse recipes, which in turn need to be in
 # the root environment.

@@ -28,7 +28,7 @@ sns.stripplot(x="ecosystem",
               jitter=True,
               alpha=0.5)
 plt.gca().set_yscale("log")
-plt.ylabel("downloads (total: {})".format(total_downloads))
+plt.ylabel("downloads (total: {:,})".format(total_downloads))
 sns.despine()
 
 
@@ -48,7 +48,7 @@ sns.violinplot(
     alpha=0.5,
     cut=0,
     data=packages)
-plt.text(plt.xlim()[1], plt.ylim()[1], "total: {}".format(total_downloads),
+plt.text(plt.xlim()[1], plt.ylim()[1], "total: {:,}".format(total_downloads),
          horizontalalignment="right", verticalalignment="top")
 sns.despine()
 plt.savefig(snakemake.output[1], bbox_inches="tight")
