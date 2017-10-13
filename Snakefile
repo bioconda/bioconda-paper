@@ -202,6 +202,16 @@ rule plot_age_vs_downloads:
         "scripts/plot-age-vs-downloads.py"
 
 
+rule plot_turnaround:
+    input:
+        "pr/all.tsv"
+    output:
+        "plots/turnaround.svg"
+    conda:
+        "envs/analysis.yaml"
+    script:
+        "scripts/plot-turnaround.py"
+
 ########### Tables ##############
 
 
@@ -236,7 +246,8 @@ rule fig2:
     input:
         workflow="plots/workflow.svg",
         dag="plots/dag.svg",
-        comp="plots/pkg-count-comparison.svg"
+        comp="plots/pkg-count-comparison.svg",
+        turnaround="plots/turnaround.svg"
     output:
         "figs/fig2.svg"
     conda:
