@@ -5,7 +5,6 @@ import pandas as pd
 
 import common
 
-plt.figure(figsize=(3,3))
 sns.set_palette("Blues")
 
 prs = pd.read_table(snakemake.input[0])
@@ -23,6 +22,21 @@ binning = pd.cut(prs.span.dt.total_seconds(),
 counts = binning.value_counts()
 # fix order
 counts = counts[labels]
-plt.pie(counts, shadow=False, labels=counts.index, autopct="%.0f%%")
 
+perc = counts / counts.sum()
+fig = plt.figure(figsize=(5, 1.3))
+ax = fig.add_subplot(1, 1, 1)
+left = 0
+for label, x in perc.items():
+    ax.barh(y=0, width=x, left=left, label=label)
+    ax.text(left + x/2, 0, label, horizontalalignment='center', verticalalignment='center')
+    left += x
+
+sns.despine(top=True, left=True, right=True, trim=True)
+ax.set_xlabel('Fraction of pull requests')
+ax.yaxis.set_visible(False)
+fig.tight_layout()
+fig.subplots_adjust(top=0.9)
+
+#plt.pie(counts, shadow=False, labels=counts.index, autopct="%.0f%%")
 plt.savefig(snakemake.output[0], bbox_inches="tight")
