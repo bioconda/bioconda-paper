@@ -159,7 +159,8 @@ rule plot_downloads:
 rule plot_ecosystems:
     input:
         "bioconda-recipes/.git/index",
-        pkg_data="package-data/all.tsv"
+        pkg_data="package-data/all.tsv",
+        bio="summary/hand-edited-summaries.tsv"
     output:
         "plots/ecosystems.svg"
     conda:
