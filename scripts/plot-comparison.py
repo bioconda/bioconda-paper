@@ -6,6 +6,7 @@ import common
 
 plt.figure(figsize=(4,2))
 
+
 summary = pd.read_table(snakemake.input[0])
 bio_related = summary.shape[0] - (summary["not_bio_related"] == "x").sum()
 # Counts from October 2017
@@ -18,10 +19,11 @@ pkg_counts = pd.DataFrame.from_dict({
     "BioBuilds": 118}, orient="index").reset_index()
 pkg_counts.columns = ["source", "count"]
 
+sns.set_palette('colorblind')
 sns.barplot(x="source", y="count", data=pkg_counts)
 plt.xticks(rotation=45, ha="right")
 plt.xlabel("")
-plt.ylabel("packages")
+plt.ylabel("Number of explicitly\nbio-related packages")
 
 # set maximum tick to be that of bioconda
 yticks = plt.gca().get_yticks()
