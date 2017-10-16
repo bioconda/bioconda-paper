@@ -15,18 +15,22 @@ packages.loc[packages.ecosystem == 'R', 'ecosystem'] = 'Bioconductor/R'
 
 # In case we want to filter downloads by whether or not a current recipe exists
 recipes = set(map(os.path.basename, glob.glob('bioconda-recipes/recipes/*')))
-
+sns.set_palette('colorblind')
 sns.boxplot(x="ecosystem",
             y="downloads",
             data=packages,
             color="white",
             whis=False,
-            showfliers=False)
+            showfliers=False,
+            order=['Bioconductor/R', 'Other', 'Python', 'Perl'],
+           )
 sns.stripplot(x="ecosystem",
               y="downloads",
               data=packages,
               jitter=True,
-              alpha=0.5)
+              alpha=0.5,
+              order=['Bioconductor/R', 'Other', 'Python', 'Perl'],
+             )
 plt.gca().set_yscale("log")
 plt.ylabel("downloads (total: {:,})".format(total_downloads))
 sns.despine()
@@ -47,7 +51,9 @@ sns.violinplot(
     y="log10 downloads",
     alpha=0.5,
     cut=0,
-    data=packages)
+    data=packages,
+    order=['Bioconductor/R', 'Other', 'Python', 'Perl'],
+)
 plt.text(plt.xlim()[1], plt.ylim()[1], "total: {:,}".format(total_downloads),
          horizontalalignment="right", verticalalignment="top")
 sns.despine()
