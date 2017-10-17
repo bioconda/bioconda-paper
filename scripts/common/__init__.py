@@ -7,3 +7,5 @@ def label(text):
 
 
 sns.set(style='ticks', context='paper', palette="tab10")
+
+sns.set_palette('colorblind')
