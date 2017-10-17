@@ -19,8 +19,7 @@ pkg_counts = pd.DataFrame.from_dict({
     "BioBuilds": 118}, orient="index").reset_index()
 pkg_counts.columns = ["source", "count"]
 
-sns.set_palette('colorblind')
-sns.barplot(x="source", y="count", data=pkg_counts)
+sns.barplot(x="source", y="count", data=pkg_counts, color='0.7')
 plt.xticks(rotation=45, ha="right")
 plt.xlabel("")
 plt.ylabel("Number of explicitly\nbio-related packages")
