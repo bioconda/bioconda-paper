@@ -14,7 +14,17 @@ rule all:
                      "contributions",
                      "downloads_violin",
                      "age-vs-downloads",
-                     "dag"])
+                     "dag"]),
+        expand("plots/{pkg}_colored.svg",
+               # identified via scripts/find-most-deps.py
+               pkg=[
+                   'multigps',
+                   'cnvkit',
+                   'jaffa',
+                   'gimmemotifs',
+                   'mageck-vispr',
+                   'cap-mirseq',
+                   'qcumber'])
 
 
 ############# Collect data ##############
@@ -143,6 +153,31 @@ rule plot_dag:
         '-Ecolor="#3333335f" -Nwidth=0.2 -LC10 -Gsize="12,12" '
         "-Nshape=circle -Npenwidth=0"
 
+
+rule color_dag:
+    input:
+        pkg='package-data/all.tsv',
+        dag='dag/dag.dot'
+    output:
+        'dag/{pkg}_colored.dot'
+    conda:
+        'envs/analysis.yaml'
+    script:
+        'scripts/color-dag.py'
+
+rule plot_colored_dag:
+    input:
+        'dag/{pkg}_colored.dot'
+    output:
+        'plots/{pkg}_colored.svg'
+    conda:
+        'envs/analysis.yaml'
+    shell:
+        "set +o pipefail; ccomps -zX#0 {input} | neato -Tsvg -o {output} "
+        '-Nlabel="" -Nstyle=filled -Nfillcolor="#7777775f" '
+        '-Ecolor="#3333335f" -Nwidth=0.2 -LC10 -Gsize="12,12" '
+        '-Earrowhead="none" -Ecolor="#3333335f" '
+        "-Nshape=circle -Npenwidth=0"
 
 rule plot_downloads:
     input:
