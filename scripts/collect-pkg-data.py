@@ -6,6 +6,7 @@ packages = []
 ndownloads = []
 ecosystem = []
 versions = []
+deps = []
 for path in snakemake.input:
     with open(path) as f:
         meta = json.load(f)
@@ -33,13 +34,17 @@ for path in snakemake.input:
             else:
                 ecosystem.append("Other")
 
+        # stores number of dependencies based on the first (0) recipe
+        deps.append(len(meta['files'][0]['attrs']['depends']))
+
 
 packages = pd.DataFrame({
     "package": packages,
     "downloads": ndownloads,
     "ecosystem": ecosystem,
-    "versions": versions
-}, columns=["package", "ecosystem", "downloads", "versions"])
+    "versions": versions,
+    "deps": deps
+}, columns=["package", "ecosystem", "downloads", "versions", "deps"])
 
 packages.sort_values("downloads", ascending=False, inplace=True)
 

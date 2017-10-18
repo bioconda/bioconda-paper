@@ -1,26 +1,25 @@
 """
-Fetches all dependencies (first order) of each package and 
-plots the histogram of the number of dependencies (degree)
-
+Get number of direct dependencies of each package and plot histogram
 
 """
 import glob
-import pylab
+import matplotlib.pyplot as plt
+import seaborn as sns
 import json
+import pandas as pd
+
+import common
+
+plt.figure(figsize=(4,2))
+packages = pd.read_table(snakemake.input[0])
+
+deps = packages["deps"]
 
 
+plt.hist(deps, range(0,30), lw=1)
+plt.xlim([0,30])
+plt.grid()
+plt.xlabel("Package degree", fontsize=16)
 
-degrees = []
-for filename in glob.glob("package-data/*json"):
-    with open(filename, "r") as fh:
-        data = json.loads(fh.read())
-        degrees.append(len(data['files'][0]['attrs']['depends']))
 
-pylab.hist(degrees, range(0,30), lw=1)
-pylab.xlim([0,30])
-pylab.grid()
-pylab.xlabel("Package degree", fontsize=16)
-
-pylab.savefig("plots/package_degrees.svg")
-#pylab.savefig("plots/package_degrees.pdf")
-
+plt.savefig(snakemake.output[0], bbox_inches="tight")
