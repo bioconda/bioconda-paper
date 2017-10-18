@@ -20,6 +20,7 @@ rule all:
 ############# Collect data ##############
 
 
+
 rule get_package_data:
     output:
         "package-data/{package}.json"
@@ -128,6 +129,17 @@ rule collect_summaries:
 
 
 ################# Plots #################
+
+
+rule plot_package_degree:
+    input:
+        "package-data/all.tsv"
+    output:
+        "plots/package_degrees.svg"
+    conda:
+        "envs/analysis.yaml"
+    script:
+        "scripts/plot-package-degrees.py"
 
 
 rule plot_dag:
