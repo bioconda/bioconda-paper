@@ -21,12 +21,16 @@ sns.boxplot(x="ecosystem",
             data=packages,
             color="white",
             whis=False,
-            showfliers=False)
+            showfliers=False,
+            order=['Bioconductor/R', 'Other', 'Python', 'Perl'],
+           )
 sns.stripplot(x="ecosystem",
               y="downloads",
               data=packages,
               jitter=True,
-              alpha=0.5)
+              alpha=0.5,
+              order=['Bioconductor/R', 'Other', 'Python', 'Perl'],
+             )
 plt.gca().set_yscale("log")
 plt.ylabel("downloads (total: {:,})".format(total_downloads))
 sns.despine()
@@ -41,14 +45,24 @@ plt.savefig(snakemake.output[0], bbox_inches="tight")
 # Take the log10 ahead of time so the KDE works well.
 packages['log10 downloads'] = np.log10(packages.downloads + 1)
 
-plt.figure(figsize=(4,2))
+fig = plt.figure(figsize=(4, 3))
+ax = fig.add_subplot(1, 1, 1)
 sns.violinplot(
     x="ecosystem",
     y="log10 downloads",
     alpha=0.5,
     cut=0,
-    data=packages)
-plt.text(plt.xlim()[1], plt.ylim()[1], "total: {:,}".format(total_downloads),
-         horizontalalignment="right", verticalalignment="top")
+    data=packages,
+    ax=ax,
+    order=['Bioconductor/R', 'Other', 'Python', 'Perl'],
+)
+ax.text(x=0.5, y=1.0, s="Total downloads: {:,}".format(total_downloads),
+         horizontalalignment="center", verticalalignment="top",
+        transform=ax.transAxes)
+ax.set_xlabel('')
+
+# make a little room for the "total" text
+ax.axis(ymax=6)
+fig.tight_layout()
 sns.despine()
 plt.savefig(snakemake.output[1], bbox_inches="tight")

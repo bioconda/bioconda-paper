@@ -14,7 +14,17 @@ rule all:
                      "contributions",
                      "downloads_violin",
                      "age-vs-downloads",
-                     "dag"])
+                     "dag"]),
+        expand("plots/{pkg}.dag.colored.svg",
+               # identified via scripts/find-most-deps.py
+               pkg=[
+                   'multigps',
+                   'cnvkit',
+                   'jaffa',
+                   'gimmemotifs',
+                   'mageck-vispr',
+                   'cap-mirseq',
+                   'qcumber'])
 
 
 ############# Collect data ##############
@@ -59,7 +69,6 @@ rule git_log:
     output:
         "git-log/bioconda-recipes.log"
     shell:
-        '(cd bioconda-recipes && git pull); '
         '(cd bioconda-recipes && '
         'git log '
         '--pretty=format:'
@@ -73,17 +82,6 @@ rule git_log:
         '> {output}'
 
 
-rule collect_contributions:
-    input:
-        "git/bioconda-recipes.log"
-    output:
-        "git/contributions.tsv"
-    conda:
-        "envs/analysis.yaml"
-    script:
-        "scripts/collect-contributions.py"
-
-
 rule get_dag:
     input:
         "bioconda-recipes/.git/index"
@@ -91,7 +89,6 @@ rule get_dag:
         "dag/dag.dot"
     shell:
         "cd bioconda-recipes; "
-        "git pull; "
         "bioconda-utils dag --hide-singletons --format dot "
         "recipes config.yml > ../{output}"
 
@@ -156,6 +153,33 @@ rule plot_dag:
         "-Nshape=circle -Npenwidth=0"
 
 
+rule plot_colored_dag:
+    input:
+        pkg='package-data/all.tsv',
+        dag='dag/dag.dot'
+    output:
+        'plots/{pkg}.dag.colored.svg'
+    conda:
+        'envs/analysis.yaml'
+    script:
+        'scripts/color-dag.py'
+
+
+# rule plot_colored_dag:
+#     input:
+#         'dag/{pkg}.colored.dot'
+#     output:
+#         'plots/{pkg}.dag.colored.svg'
+#     conda:
+#         'envs/analysis.yaml'
+#     shell:
+#         "set +o pipefail; ccomps -zX#0 {input} | neato -Tsvg -o {output} "
+#         '-Nlabel="" -Nstyle=filled -Nfillcolor="#7777778f" '
+#         '-Ecolor="#3333335f" -Nwidth=0.2 -LC10 -Gsize="12,12" '
+#         '-Earrowhead="none" -Nshape=circle -Npenwidth=0 '
+#         '-Goutputorder=edgesfirst'
+
+
 rule plot_downloads:
     input:
         "package-data/all.tsv",
@@ -171,7 +195,8 @@ rule plot_downloads:
 rule plot_ecosystems:
     input:
         "bioconda-recipes/.git/index",
-        pkg_data="package-data/all.tsv"
+        pkg_data="package-data/all.tsv",
+        bio="summary/hand-edited-summaries.tsv"
     output:
         "plots/ecosystems.svg"
     conda:
@@ -257,7 +282,7 @@ rule fig1:
 rule fig2:
     input:
         workflow="plots/workflow.svg",
-        dag="plots/dag.svg",
+        dag="plots/cnvkit.dag.colored.svg",
         comp="plots/pkg-count-comparison.svg",
         turnaround="plots/turnaround.svg"
     output:
