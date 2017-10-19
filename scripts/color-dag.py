@@ -15,8 +15,8 @@ packages.loc[packages.ecosystem == 'Bioconductor', 'ecosystem'] = 'Bioconductor/
 packages.loc[packages.ecosystem == 'R', 'ecosystem'] = 'Bioconductor/R'
 lookup = packages['ecosystem'].to_dict()
 colors = dict(zip(['Bioconductor/R', 'Other', 'Python', 'Perl'], sns.color_palette('colorblind')))
-g = read_dot('dag/dag.dot')
-dot = parser.parse_dot_data(open('dag/dag.dot').read())
+g = read_dot(snakemake.input.dag)
+dot = parser.parse_dot_data(open(snakemake.input.dag).read())
 pkg = snakemake.wildcards.pkg
 sub = list(nx.ancestors(g, pkg))
 for i in sub:
