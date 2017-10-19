@@ -29,7 +29,7 @@ pos = graphviz_layout(g, prog='neato')
 plt.figure(figsize=(6,6))
 # draw DAG
 nx.draw_networkx_edges(g, pos, edge_color='#777777', alpha=0.5, arrows=False)
-nx.draw_networkx_nodes(g, pos, node_color='#333333', alpha=0.5, node_size=3)
+nx.draw_networkx_nodes(g, pos, node_color='#333333', alpha=0.5, node_size=6)
 
 # draw induced subdag
 nx.draw_networkx_edges(g, pos,
@@ -37,10 +37,10 @@ nx.draw_networkx_edges(g, pos,
                        edge_color='k', width=3.0, arrows=False)
 nx.draw_networkx_nodes(g, pos, nodelist=deps,
                        node_color=[rgb2hex(colors[lookup[v]]) for v in deps],
-                       linewidths=0, node_size=60)
+                       linewidths=0, node_size=120)
 nx.draw_networkx_nodes(g, pos, nodelist=[pkg],
                        node_color=rgb2hex(colors[lookup[pkg]]),
-                       linewidths=0, node_size=60, node_shape='s')
+                       linewidths=0, node_size=120, node_shape='s')
 xs = [x for x, y in pos.values()]
 ys = [y for x, y in pos.values()]
 plt.xlim((min(xs) - 10, max(xs) + 10))

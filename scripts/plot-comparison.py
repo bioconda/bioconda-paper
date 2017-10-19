@@ -16,6 +16,7 @@ pkg_counts = pd.DataFrame.from_dict({
     "Homebrew Science": 622,
     "Gentoo Science": 480,
     "Biolinux": 308,
+    "GNU Guix": 254,
     "BioBuilds": 118}, orient="index").reset_index()
 pkg_counts.columns = ["source", "count"]
 
