@@ -7,6 +7,7 @@ packages = set(p["name"] for p in repodata["packages"].values())
 
 rule all:
     input:
+        "plots/add+del.pdf",
         expand("figs/fig{f}.pdf", f=[1, 2]),
         expand("plots/{plot}.svg",
                plot=["downloads",
@@ -126,6 +127,15 @@ rule collect_summaries:
 
 
 ################# Plots #################
+
+
+rule plot_adddel:
+    output:
+        "plots/add+del.svg"
+    conda:
+        "envs/analysis.yaml"
+    script:
+        "scripts/plot-add-del.py"
 
 
 rule plot_package_degree:
