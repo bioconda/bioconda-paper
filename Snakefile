@@ -141,31 +141,31 @@ rule plot_dag:
         "-Nshape=circle -Npenwidth=0"
 
 
-rule color_dag:
+rule plot_colored_dag:
     input:
         pkg='package-data/all.tsv',
         dag='dag/dag.dot'
     output:
-        'dag/{pkg}.colored.dot'
+        'plots/{pkg}.dag.colored.svg'
     conda:
         'envs/analysis.yaml'
     script:
         'scripts/color-dag.py'
 
 
-rule plot_colored_dag:
-    input:
-        'dag/{pkg}.colored.dot'
-    output:
-        'plots/{pkg}.dag.colored.svg'
-    conda:
-        'envs/analysis.yaml'
-    shell:
-        "set +o pipefail; ccomps -zX#0 {input} | neato -Tsvg -o {output} "
-        '-Nlabel="" -Nstyle=filled -Nfillcolor="#5555555f" '
-        '-Ecolor="#3333335f" -Nwidth=0.2 -LC10 -Gsize="12,12" '
-        '-Earrowhead="none" -Nshape=circle -Npenwidth=0 '
-        '-Goutputorder=edgesfirst'
+# rule plot_colored_dag:
+#     input:
+#         'dag/{pkg}.colored.dot'
+#     output:
+#         'plots/{pkg}.dag.colored.svg'
+#     conda:
+#         'envs/analysis.yaml'
+#     shell:
+#         "set +o pipefail; ccomps -zX#0 {input} | neato -Tsvg -o {output} "
+#         '-Nlabel="" -Nstyle=filled -Nfillcolor="#7777778f" '
+#         '-Ecolor="#3333335f" -Nwidth=0.2 -LC10 -Gsize="12,12" '
+#         '-Earrowhead="none" -Nshape=circle -Npenwidth=0 '
+#         '-Goutputorder=edgesfirst'
 
 
 rule plot_downloads:
