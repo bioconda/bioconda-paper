@@ -13,10 +13,10 @@ bio_related = summary.shape[0] - (summary["not_bio_related"] == "x").sum()
 pkg_counts = pd.DataFrame.from_dict({
     "Bioconda": bio_related,
     "Debian Med": 882,
-    "Homebrew Science": 622,
-    "Gentoo Science": 480,
+    "Gentoo Science": 480,   # category sci-biology
     "Biolinux": 308,
-    "GNU Guix": 254,
+    "Homebrew Science": 297, # tag bioinformatics
+    "GNU Guix": 254,         # category bioinformatics
     "BioBuilds": 118}, orient="index").reset_index()
 pkg_counts.columns = ["source", "count"]
 
