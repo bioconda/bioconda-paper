@@ -15,7 +15,7 @@ rule all:
                      "downloads_violin",
                      "age-vs-downloads",
                      "dag"]),
-        expand("plots/{pkg}_colored.svg",
+        expand("plots/{pkg}.dag.colored.svg",
                # identified via scripts/find-most-deps.py
                pkg=[
                    'multigps',
@@ -68,7 +68,6 @@ rule git_log:
     output:
         "git-log/bioconda-recipes.log"
     shell:
-        '(cd bioconda-recipes && git pull); '
         '(cd bioconda-recipes && '
         'git log '
         '--pretty=format:'
@@ -82,17 +81,6 @@ rule git_log:
         '> {output}'
 
 
-rule collect_contributions:
-    input:
-        "git/bioconda-recipes.log"
-    output:
-        "git/contributions.tsv"
-    conda:
-        "envs/analysis.yaml"
-    script:
-        "scripts/collect-contributions.py"
-
-
 rule get_dag:
     input:
         "bioconda-recipes/.git/index"
@@ -100,7 +88,6 @@ rule get_dag:
         "dag/dag.dot"
     shell:
         "cd bioconda-recipes; "
-        "git pull; "
         "bioconda-utils dag --hide-singletons --format dot "
         "recipes config.yml > ../{output}"
 
@@ -159,25 +146,27 @@ rule color_dag:
         pkg='package-data/all.tsv',
         dag='dag/dag.dot'
     output:
-        'dag/{pkg}_colored.dot'
+        'dag/{pkg}.colored.dot'
     conda:
         'envs/analysis.yaml'
     script:
         'scripts/color-dag.py'
 
+
 rule plot_colored_dag:
     input:
-        'dag/{pkg}_colored.dot'
+        'dag/{pkg}.colored.dot'
     output:
-        'plots/{pkg}_colored.svg'
+        'plots/{pkg}.dag.colored.svg'
     conda:
         'envs/analysis.yaml'
     shell:
         "set +o pipefail; ccomps -zX#0 {input} | neato -Tsvg -o {output} "
-        '-Nlabel="" -Nstyle=filled -Nfillcolor="#7777775f" '
+        '-Nlabel="" -Nstyle=filled -Nfillcolor="#5555555f" '
         '-Ecolor="#3333335f" -Nwidth=0.2 -LC10 -Gsize="12,12" '
-        '-Earrowhead="none" -Ecolor="#3333335f" '
-        "-Nshape=circle -Npenwidth=0"
+        '-Earrowhead="none" -Nshape=circle -Npenwidth=0 '
+        '-Goutputorder=edgesfirst'
+
 
 rule plot_downloads:
     input:
@@ -281,7 +270,7 @@ rule fig1:
 rule fig2:
     input:
         workflow="plots/workflow.svg",
-        dag="plots/dag.svg",
+        dag="plots/cnvkit.dag.colored.svg",
         comp="plots/pkg-count-comparison.svg",
         turnaround="plots/turnaround.svg"
     output:

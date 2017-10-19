@@ -4,7 +4,7 @@ import seaborn as sns
 import networkx as nx
 import glob
 import os
-from networkx.drawing.nx_agraph import read_dot
+from networkx.drawing.nx_agraph import read_dot, write_dot
 from matplotlib.colors import rgb2hex
 from pydotplus import parser
 
@@ -18,14 +18,22 @@ colors = dict(zip(['Bioconductor/R', 'Other', 'Python', 'Perl'], sns.color_palet
 g = read_dot(snakemake.input.dag)
 dot = parser.parse_dot_data(open(snakemake.input.dag).read())
 pkg = snakemake.wildcards.pkg
-sub = list(nx.ancestors(g, pkg))
-for i in sub:
-    node = dot.get_node(i)
-    if not node:
-        node = dot.get_node('"' + i + '"')
-        if not node:
-            continue
-    node = node[0]
-    node.set_fillcolor(rgb2hex(colors[lookup[i]]))
-    node.set_width(0.4)
-dot.write('dag/{}_colored.dot'.format(pkg))
+sub = set(nx.ancestors(g, pkg))
+sub.add(pkg)
+for v in sub:
+
+    color = rgb2hex(colors[lookup[v]]) + "ff" # be opaque
+    v_ = g.nodes[v]
+    v_['fillcolor'] = color
+    v_['style'] = 'filled'
+    v_['width'] = 0.4
+    if v == pkg:
+        v_['shape'] = 'square'
+
+for u, v in g.edges(sub):
+    if u in sub and v in sub:
+        e = g.edges[u, v]
+        e['color'] = '#000000'
+        e['penwidth'] = 5.0
+
+write_dot(g, snakemake.output[0])
