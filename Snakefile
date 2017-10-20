@@ -228,7 +228,7 @@ rule plot_comparison:
 
 rule plot_contributions:
     input:
-        "git-log/parsed-log.tsv",
+        "git-log/parsed-log.tsv"
     output:
         "plots/contributions.svg"
     conda:
@@ -278,6 +278,7 @@ rule stats:
 
 rule fig1:
     input:
+        add_del="plots/add+del.svg",
         contributions="plots/contributions.svg",
         downloads="plots/downloads_violin.svg",
         ecosystems="plots/ecosystems.svg"

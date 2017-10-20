@@ -20,12 +20,12 @@ for freq in repo.get_stats_code_frequency():
     deletions.append(abs(freq.deletions))
 
 
-plt.figure(figsize=(4,2))
+plt.figure(figsize=(4,1.2))
 
 plt.semilogy(weeks, additions, "-", label="additions")
 plt.semilogy(weeks, deletions, "-", label="deletions")
 plt.ylabel("count per week")
-plt.legend()
+plt.legend(bbox_to_anchor=(0.68, 0.65))
 
 plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
 plt.xticks(rotation=45, ha="right")
