@@ -12,9 +12,10 @@ authors["commits"] = 0
 github = Github(os.environ["GITHUB_TOKEN"])
 repo = github.get_repo("bioconda/bioconda-recipes")
 contributors = repo.get_stats_contributors()
-for contr in contributors:
+utils_contributors = github.get_repo("bioconda/bioconda-utils").get_stats_contributors()
+for contr in contributors + utils_contributors:
     if contr.author.login in authors.index:
-        authors.loc[contr.author.login, "commits"] = contr.total
+        authors.loc[contr.author.login, "commits"] += contr.total
 
 # order by commits
 authors.sort_values("commits", inplace=True, ascending=False)
