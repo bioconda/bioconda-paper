@@ -19,20 +19,8 @@ plt.legend()
 plt.ylabel("count")
 plt.xlabel("")
 
-#ax1 = fig.add_subplot(1, 1, 1)
-#ax2 = fig.add_subplot(2, 1, 2)
-
-#df.semilogy('time', 'cumulative_authors', ax=ax1, legend=True)
-#df.semilogy('time', 'cumulative_recipes', ax=ax1, legend=True)
-#ax1.set_ylabel('Authors')
-#ax2.set_ylabel('Recipes')
-#ax2.set_xlabel('Time')
-#ax1.set_xlabel('')
-#ax1.set_xticklabels([])
-#plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
-#plt.gca().set_xticklabels([])
+# deactivate xticks because we have them in the plot below in the figure
 plt.xticks([])
-#plt.xticks(rotation=45, ha="right")
 sns.despine()
 
 fig.savefig(outfile, bbox_inches="tight")

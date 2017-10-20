@@ -219,7 +219,8 @@ rule plot_comparison:
     input:
         "summary/hand-edited-summaries.tsv"
     output:
-        "plots/pkg-count-comparison.svg"
+        counts="plots/pkg-count-comparison.svg",
+        age="plots/age-comparison.svg"
     conda:
         "envs/analysis.yaml"
     script:
@@ -295,6 +296,7 @@ rule fig2:
         workflow="plots/workflow.svg",
         dag="plots/cnvkit.dag.colored.svg",
         comp="plots/pkg-count-comparison.svg",
+        age="plots/age-comparison.svg",
         turnaround="plots/turnaround.svg"
     output:
         "figs/fig2.svg"
