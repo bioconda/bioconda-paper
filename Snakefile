@@ -275,9 +275,15 @@ rule stats:
         "scripts/stats.py"
 
 
-rule authors:
+rule author_list:
     input:
-        
+        "resources/authors.tsv"
+    output:
+        "resources/authors.tex"
+    conda:
+        "envs/analysis.yaml"
+    script:
+        "scripts/author-list.py"
 
 
 ########### Figures #############
