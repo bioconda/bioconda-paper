@@ -275,6 +275,11 @@ rule stats:
         "scripts/stats.py"
 
 
+rule authors:
+    input:
+        
+
+
 ########### Figures #############
 
 rule fig1:
