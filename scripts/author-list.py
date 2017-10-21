@@ -59,8 +59,14 @@ affiliations = {a: i + 1
 print(*sorted(affiliations), sep="\n")
 
 with open(snakemake.output[0], "w") as tex:
-    for author in authors.itertuples():
+    for i, author in enumerate(authors.itertuples()):
         a = ",".join(str(affiliations[a]) for a in parse_affiliations(author.affiliation))
-        print(r"\author[{}]{{~{}}}".format(a, author.name), file=tex)
+        footnote = ""
+        if i == len(authors) -1:
+            footnote = r"\thanks{To whom correspondence should be addressed.}\textsuperscript{,}"
+        elif i == 1:
+            footnote = r"\thanks{Co-first author}\textsuperscript{,}"
+        print(r"\author[{}]{{{}{}}}".format(a, author.name, footnote), file=tex)
+
     for affiliation, i in sorted(affiliations.items(), key=itemgetter(1)):
         print(r"\affil[{}]{{{}}}".format(i, affiliation), file=tex)
