@@ -279,7 +279,8 @@ rule author_list:
     input:
         "resources/authors.tsv"
     output:
-        "resources/authors.tex"
+        tex="resources/authors.tex",
+        table="resources/authors-commits.tsv"
     conda:
         "envs/analysis.yaml"
     script:
