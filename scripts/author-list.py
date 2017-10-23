@@ -38,6 +38,9 @@ authors = pd.concat([
 
 authors.to_csv(snakemake.output.table, sep="\t")
 
+# only keep authors with at least one commit
+authors = authors[authors.commits >= 1]
+
 def parse_affiliations(a):
     return (b.strip() for b in a.split(";"))
 
