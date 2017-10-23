@@ -1,6 +1,6 @@
 username	name	affiliation	commits
 daler	Ryan Dale	Laboratory of Cellular and Developmental Biology, National Institute of Diabetes and Digestive and Kidney Diseases, National Institutes of Health, Bethesda, United States	1757
-bgruening	Björn Grüning	Bioinformatics Group, Department of Computer Science, University of Freiburg, Freiburg, Germany	2544
+bgruening	Björn Grüning	Bioinformatics Group, Department of Computer Science, University of Freiburg, Freiburg, Germany	2545
 druvus	Andreas Sjödin	Division of CBRN Security and Defence, FOI - Swedish Defence Research Agency, Umeå. Sweden; Department of Chemistry, Computational Life Science Cluster (CLiC), Umeå University, Umeå, Sweden	1073
 chapmanb	Brad A. Chapman	Harvard T.H. Chan School of Public Health, Boston, United States	649
 jerowe	Jillian Rowe	NYU Abu Dhabi, Abu Dhabi, United Arab Emirates	626
@@ -44,52 +44,53 @@ holtgrewe	Manuel Holtgrewe	Core Unit Bioinformatics, Berlin Institute of Health,
 jfallmann	Jörg Fallmann	Bioinformatics Group, Department of Computer Science and Interdisciplinary Center for Bioinformatics, University of Leipzig, Leipzig, Germany	39
 pirovc	Vitor C. Piro	Bioinformatics Unit, Robert Koch Institute, Berlin, Germany; CAPES Foundation, Ministry of Education of Brazil, Brasília, Brazil	38
 Takadonet	Philip Mabon	National Microbiology Laboratory, Public Health Agency of Canada, Winnipeg, Canada	36
-notestaff	Ilya Shlyakhter	Broad Institute of MIT and Harvard, Cambridge, United States	36
 kepbod	Xiao-Ou Zhang	Program in Bioinformatics and Integrative Biology, University of Massachusetts Medical School, Worcester, United States	36
-shenwei356	Wei Shen	Department of Clinical Laboratory, Chengdu Military General Hospital, Chengdu, China	35
+notestaff	Ilya Shlyakhter	Broad Institute of MIT and Harvard, Cambridge, United States	36
 JenCabral	Jennifer Cabral	National Microbiology Laboratory, Public Health Agency of Canada, Winnipeg, Canada	35
+shenwei356	Wei Shen	Department of Clinical Laboratory, Chengdu Military General Hospital, Chengdu, China	35
 cristhomas	Cristel Thomas	 Northrop Grumman Corporation, Technology Services, Rockville, United States	34
-ericenns	Eric Enns	 National Microbiology Laboratory, Public Health Agency of Canada, Winnipeg, Canada	34
 brwnj	Joseph Brown	 Biological Sciences Division, Pacific Northwest National Laboratory, Richland, United States	34
+ericenns	Eric Enns	 National Microbiology Laboratory, Public Health Agency of Canada, Winnipeg, Canada	34
 jeromekelleher	Jerome Kelleher	Big Data Institute, Li Ka Shing Centre for Health Information and Discovery, University of Oxford, Oxford, United Kingdom	32
 glormph	Jorrit Boekel	Department of Oncology-Pathology, National Bioinformatics Infrastructure Sweden, Science for Life Laboratory, Karolinska Institutet, Solna, Sweden	32
 mdehollander	Mattias de Hollander	Netherlands Institute of Ecology (NIOO-KNAW), Wageningen, The Netherlands	32
-davebx	Dave Bouvier	Department of Biochemistry & Molecular Biology, Penn State University, University Park, United States	31
-jrderuiter	Julian R. de Ruiter	Divisions of Molecular Pathology and Molecular Carcinogenesis, The Netherlands Cancer Institute, Amsterdam, The Netherlands	31
 nturaga	Nitesh Turaga	Department of Biology, Johns Hopkins University, Baltimore, United States	31
 Slugger70	Simon Gladman	Melbourne Bioinformatics, University of Melbourne, Melbourne, Australia	31
+jrderuiter	Julian R. de Ruiter	Divisions of Molecular Pathology and Molecular Carcinogenesis, The Netherlands Cancer Institute, Amsterdam, The Netherlands	31
+davebx	Dave Bouvier	Department of Biochemistry & Molecular Biology, Penn State University, University Park, United States	31
 hardingnj	Nicholas Harding	Big Data Institute, Li Ka Shing Centre for Health Information and Discovery, University of Oxford, Oxford, United Kingdom	30
 saketkc	Saket Choudhary	Computational Biology and Bioinformatics, University of Southern California, Los Angeles, United States	28
 eggzilla	Florian Eggenhofer	Bioinformatics Group, Department of Computer Science, University of Freiburg, Freiburg, Germany	27
+ArneKr	Arne Kratz	Bioinformatics Research Centre, Aarhus University, Aarhus, Denmark	26
+BioNinja	Zhuoqing Fang	Shanghai Institutes for Biological Sciences, University of Chinese Academy of Sciences, Chinese Academy of Sciences, Shanghai China	25
 RobertKleinkauf	Robert Kleinkauf	-	25
 HenningTimm	Henning Timm	Genome Informatics, Institute of Human Genetics, University Hospital Essen, University of Duisburg-Essen, Essen, Germany	25
-BioNinja	Zhuoqing Fang	Shanghai Institutes for Biological Sciences, University of Chinese Academy of Sciences, Chinese Academy of Sciences, Shanghai China	25
 peterjc	Peter J. A. Cock	 The James Hutton Institute, Dundee, United Kingdom	22
-hainm	Hai Nguyen	Department of Chemistry & Chemical Biology, Rutgers University, Piscataway, United States	20
-eseiler	Enrico Seiler	Bioinformatics Unit, Robert Koch Institute, Berlin, Germany	20
 colinbrislawn	Colin Brislawn	Earth and Biological Sciences Directorate, Pacific Northwest National Laboratory, Richland, United States	20
+eseiler	Enrico Seiler	Bioinformatics Unit, Robert Koch Institute, Berlin, Germany	20
+hainm	Hai Nguyen	Department of Chemistry & Chemical Biology, Rutgers University, Piscataway, United States	20
 endrebak	Endre Bakken Stovner	Department of Computer Science, Norwegian University of Science and Technology	20
-ewels	Philip Ewels	Department of Biochemistry and Biophysics, Science for Life Laboratory, Stockholm University, Stockholm, Sweden	19
 chambm	Matt Chambers	Department of Biochemistry, Molecular Biology and Biophysics (as contractor, not employee), University of Minnesota, Minneapolis, United States	19
 emilhaegglund	Emil Hägglund	Department of Molecular Evolution, Cell and Molecular Biology, Science for Life Laboratory, Biomedical Centre, Uppsala University, Uppsala, Sweden	19
+ewels	Philip Ewels	Department of Biochemistry and Biophysics, Science for Life Laboratory, Stockholm University, Stockholm, Sweden	19
 jj-umn	James E. Johnson	Minnesota Supercomputing Institute, University of Minnesota, Minneapolis, United States	19
-brainstorm	Roman Valls Guimera	 Center for Cancer Research, University of Melbourne, Melbourne, Australia	18
 epruesse	Elmar Pruesse	University of Colorado, Denver, United States	18
 yesimon	Simon Ye	Massachusetts Institute of Technology, Cambridge, United States	18
+brainstorm	Roman Valls Guimera	 Center for Cancer Research, University of Melbourne, Melbourne, Australia	18
 xguse	W. Augustine Dunn	Boston Children's Hospital, Boston, United States	17
 lparsons	Lance Parsons	Lewis-Sigler Institute for Integrative Genomics, Princeton University, Princeton, United States	17
-mcornwell1957	MacIntosh Cornwell	New York University School of Medicine, New York City, United States	16
-rob-p	Rob Patro	Department of Computer Science, Stony Brook University, Stony Brook, United States	16
 vodkatad	Elena Grassi	Transcription and Chromatin Lab, Humanitas University, Rozzano, Italy	16
 iwohlers	Inken Wohlers	Lübeck Interdisciplinary Platform for Genome Analytics (LIGA), Institutes of Neurogenetics and Integrative Experimental Genomics, University of Lübeck, Lübeck, Germany	16
+rob-p	Rob Patro	Department of Computer Science, Stony Brook University, Stony Brook, United States	16
+mcornwell1957	MacIntosh Cornwell	New York University School of Medicine, New York City, United States	16
 alexpreynolds	Alex Reynolds	Altius Institute for Biomedical Sciences, Seattle, United States	16
 dkoppstein	David Koppstein	The Kirby Institute of Infection and Immunity, University of New South Wales, Sydney, Australia	16
 blankenberg	Daniel Blankenberg	Genomic Medicine Institute, Lerner Research Institute, Cleveland Clinic, Cleveland, United States	15
 NickSto	Nicholas Stoler	Department of Biochemistry and Molecular Biology, Penn State University, University Park, United States	14
 guowei-he	Guowei He	High Performance Computing, NYU Abu Dhabi, Abu Dhabi, United Arab Emirates	14
 rfarouni	Rick Farouni	Massachusetts General Hospital and Harvard Medical School, Boston, United States	13
-JungeAlexander	Alexander Junge	Disease Systems Biology Program, Novo Nordisk Foundation Center for Protein Research, University of Copenhagen, Copenhagen, Denmark	13
 malloryfreeberg	Mallory Freeberg	 EMBL-EBI, Wellcome Genome Campus, Hinxton, Cambridgeshire, United Kingdom	13
+JungeAlexander	Alexander Junge	Disease Systems Biology Program, Novo Nordisk Foundation Center for Protein Research, University of Copenhagen, Copenhagen, Denmark	13
 bogemad	Daniel R. Bogema	NSW Department of Primary Industries, Elizabeth Macarthur Agricultural Institute, Menangle, Australia	12
 fabio-cumbo	Fabio Cumbo	"Department of Engineering, Roma Tre University, Rome, Italy; Institute for Systems Analysis and Computer Science ""Antonio Ruberti"", National Research Council of Italy, Rome, Italy; Department of Biochemistry and Molecular Biology, Penn State University, University Park, United States"	11
 ernfrid	David E Larson	The McDonnell Genome Institute, Washington University, St. Louis, United States	11
@@ -98,61 +99,64 @@ ccwang002	Liang-Bo Wang	Oncology Division, Department of Medicine, Washington Un
 upendrak	Upendra Kumar Devisetty	CyVerse, Bio5 institute, University of Arizona, Tucson, United States	9
 mworkentine	Matthew L. Workentine	Faculty of Veterinary Medicine, University of Calgary, Calgary, Canada	9
 Cashalow	Sacha Laurent	 Institute of Microbiology, Universitary Hospital of Lausanne, Switzerland	8
-rasmusagren	Rasmus Agren	Department of Biology and Biological Engineering, National Bioinformatics Infrastructure Sweden, Science for Life Laboratory, Chalmers University of Technology, Sweden	7
-xgaia	Xavier Garnier	INRA, UMR IGEPP, BioInformatics Platform for Agroecosystems Arthropods (BIPAA), Campus Beaulieu, Rennes, France; Dyliss - Dynamics, Logics and Inference for biological Systems and Sequences, Inria/IRISA, Campus Beaulieu, Rennes, France	7
 pkrog	Pierrick Roger	CEA, LIST, Laboratory for data analysis and systems' intelligence, MetaboHUB, France	7
+rasmusagren	Rasmus Agren	Department of Biology and Biological Engineering, National Bioinformatics Infrastructure Sweden, Science for Life Laboratory, Chalmers University of Technology, Sweden	7
 jmeppley	John M Eppley	Daniel K. Inouye Center for Microbial Oceanography: Research and Education, Department of Oceanography, University of Hawaii, Honolulu, United States	7
+xgaia	Xavier Garnier	INRA, UMR IGEPP, BioInformatics Platform for Agroecosystems Arthropods (BIPAA), Campus Beaulieu, Rennes, France; Dyliss - Dynamics, Logics and Inference for biological Systems and Sequences, Inria/IRISA, Campus Beaulieu, Rennes, France	7
 BiancaStoecker	Bianca Katharina Stöcker	Genome Informatics, Institute of Human Genetics, University Hospital Essen, University of Duisburg-Essen, Essen, Germany	6
-tobiasrausch	Tobias Rausch	European Molecular Biology Laboratory (EMBL), Genomics Core Facility, Heidelberg, Germany	6
 jxtx	James Taylor	 Departments of Biology and Computer Science, Johns Hopkins University, Baltimore, United States	6
 davidliwei	Wei Li	Department of Biostatistics and Computational Biology, Dana-Farber Cancer Institute, Harvard T.H. Chan School of Public Health, Boston, United States	6
+tobiasrausch	Tobias Rausch	European Molecular Biology Laboratory (EMBL), Genomics Core Facility, Heidelberg, Germany	6
+bsennblad	Bengt Sennblad	Department of Cell and Molecular Biology, National Bioinformatics Infrastructure Sweden, Science for Life Laboratory, Uppsala University, Uppsala, Sweden	5
+nvictus	Nezar Abdennur	Massachusetts Institute of Technology, Cambridge, United States	5
 PatrickRWright	Patrick R. Wright	Bioinformatics Group, Department of Computer Science, University of Freiburg, Freiburg, Germany	5
 davidechicco	Davide Chicco	Princess Margaret Cancer Centre, Toronto, Canada	5
 jbaaijens	Jasmijn A. Baaijens	Centrum Wiskunde and Informatica, Amsterdam, Netherlands	5
-nvictus	Nezar Abdennur	Massachusetts Institute of Technology, Cambridge, United States	5
-bsennblad	Bengt Sennblad	Department of Cell and Molecular Biology, National Bioinformatics Infrastructure Sweden, Science for Life Laboratory, Uppsala University, Uppsala, Sweden	5
-vinjana	Philip Reiner Kensche	German Cancer Research Center (DKFZ), Foundation under Public Law, Heidelberg, Germany	4
-yp	Yuri Pirola	Dip. di Informatica Sistemistica e Comunicazione, Univ. degli Studi di Milano-Bicocca, Milan, Italy	4
 lucapinello	Luca Pinello	Massachusetts General Hospital and Harvard Medical School, Boston, United States	4
-inodb	Ino de Bruijn	Department of Pathology, Memorial Sloan Kettering Cancer Center, New York, United States	4
-jenzopr	Jens Preussner	ECCPS Bioinformatics Core Unit, Max Planck Institute for Heart and Lung Research, Bad Nauheim, Germany	4
-mbargull	Marcel Bargull	Genome Informatics, Institute of Human Genetics, University Hospital Essen, University of Duisburg-Essen, Essen, Germany	4
-hellothisisMatt	Matthew Gopez	 National Microbiology Laboratory, Public Health Agency of Canada, Winnipeg, Canada	4
 micknudsen	Michael Knudsen	 Department of Molecular Medicine, Aarhus University Hospital, Aarhus, Denmark	4
+hellothisisMatt	Matthew Gopez	 National Microbiology Laboratory, Public Health Agency of Canada, Winnipeg, Canada	4
 k3yavi	Avi Srivastava	Department of Computer Science, Stony Brook University, Stony Brook, United States	4
-shiltemann	Saskia Hiltemann	Erasmus Medical Center, Rotterdam, The Netherlands	3
-ar0ch	Aroon T. Chande	Applied Bioinformatics Laboratory, 2 Ravinia Drive, Suite 1200 Atlanta, GA 30346, United States	3
-raivivek	Vivek Rai	Department of Computational Medicine and Bioinformatics, University of Michigan, Ann Arbor, United States	3
-christofsteel	Christoph Stahl	Genome Informatics, Institute of Human Genetics, University Hospital Essen, University of Duisburg Essen, Essen, Germany	3
-oena	Oana M. Enache	Broad Institute of MIT and Harvard, Cambridge, United States	3
-asntech	Aziz Khan	Centre for Molecular Medicine Norway (NCMM), Nordic EMBL Partnership, University of Oslo, Oslo, Norway	3
-mlbendall	Matthew L. Bendall	Computational Biology Institute, Milken Institute School of Public Health, The George Washington University, Washington, D.C., United States; Department of Microbiology, Immunology & Tropical Medicine, The George Washington University School of Medicine and Health Sciences, Washington, D.C., United States	3
+mbargull	Marcel Bargull	Genome Informatics, Institute of Human Genetics, University Hospital Essen, University of Duisburg-Essen, Essen, Germany	4
+vinjana	Philip Reiner Kensche	German Cancer Research Center (DKFZ), Foundation under Public Law, Heidelberg, Germany	4
+inodb	Ino de Bruijn	Department of Pathology, Memorial Sloan Kettering Cancer Center, New York, United States	4
+yp	Yuri Pirola	Dip. di Informatica Sistemistica e Comunicazione, Univ. degli Studi di Milano-Bicocca, Milan, Italy	4
+jenzopr	Jens Preussner	ECCPS Bioinformatics Core Unit, Max Planck Institute for Heart and Lung Research, Bad Nauheim, Germany	4
 ggonnella	Giorgio Gonnella	ZBH - Center for Bioinformatics, MIN-Fakultät, Universität Hamburg, Hamburg, Germany	3
+alimanfoo	Alistair Miles	Big Data Institute, Li Ka Shing Centre for Health Information and Discovery, University of Oxford, Oxford, United Kingdom	3
+oena	Oana M. Enache	Broad Institute of MIT and Harvard, Cambridge, United States	3
+christofsteel	Christoph Stahl	Genome Informatics, Institute of Human Genetics, University Hospital Essen, University of Duisburg Essen, Essen, Germany	3
+ar0ch	Aroon T. Chande	Applied Bioinformatics Laboratory, 2 Ravinia Drive, Suite 1200 Atlanta, GA 30346, United States	3
+mlbendall	Matthew L. Bendall	Computational Biology Institute, Milken Institute School of Public Health, The George Washington University, Washington, D.C., United States; Department of Microbiology, Immunology & Tropical Medicine, The George Washington University School of Medicine and Health Sciences, Washington, D.C., United States	3
+asntech	Aziz Khan	Centre for Molecular Medicine Norway (NCMM), Nordic EMBL Partnership, University of Oslo, Oslo, Norway	3
+shiltemann	Saskia Hiltemann	Erasmus Medical Center, Rotterdam, The Netherlands	3
+raivivek	Vivek Rai	Department of Computational Medicine and Bioinformatics, University of Michigan, Ann Arbor, United States	3
 ypriverol	Yasset Perez-Riverol	European Molecular Biology Laboratory, European Bioinformatics Institute, Wellcome Trust Genome Campus , Hinxton, Cambridge, United Kingdom	2
-arvkevi	Kevin Arvai	GeneDx, Gaithersburg, United States	2
 eclarke	Erik Clarke	Department of Microbiology, University of Pennsylvania, United States	2
-matthieujung	Matthieu Jung	Institut de Génétique et de Biologie Moléculaire et Cellulaire, CNRS, Illkirch, France	2
-sschmeier	Sebastian Schmeier	Massey University, Institute of Natural and Mathematical Sciences, North Shore City, New Zealand	2
 nickp60	Nicholas R. Waters	Department of Microbiology, School of Natural Sciences, National University of Ireland, Galway, Ireland Information and Computational Sciences, James Hutton Institute, Invergowrie, Scotland	2
+sschmeier	Sebastian Schmeier	Massey University, Institute of Natural and Mathematical Sciences, North Shore City, New Zealand	2
+arvkevi	Kevin Arvai	GeneDx, Gaithersburg, United States	2
+matthieujung	Matthieu Jung	Institut de Génétique et de Biologie Moléculaire et Cellulaire, CNRS, Illkirch, France	2
 jcapelladesto	Jordi Capellades	Universitat Rovira i Virgili, Spanish Biomedical Research Center in Diabetes and Associated Metabolic Disorders (CIBERDEM), Reus Spain	1
-thw17	Timothy H. Webster	School of Life Sciences, Arizona State University, Tempe, United States	1
+julozi	Julien Seiler	Institut de Génétique et de Biologie Moléculaire et Cellulaire, CNRS, Illkirch, France	1
+christopher-schroeder	Christopher Schröder	Genome Informatics, Institute of Human Genetics, University of Duisburg-Essen, Essen, Germany	1
+camytran	Camy Tran	 National Microbiology Laboratory, Public Health Agency of Canada, Winnipeg, Canada	1
+khourhin	Etienne Kornobis	Epigenetic Regulation Unit, Pasteur Institute, Paris, France	1
+Adamtaranto	Adam P. Taranto	Plant Sciences Division, Research School of Biology, The Australian National University, Canberra, Australia	1
 mikheyev	Alexander S Mikheyev	Evolutionary Genomics Lab, Research School of Biology, The Australian National University, Canberra, Australia; Ecology and Evolution Unit, Okinawa Institute of Science and Technology Graduate University, Onna-son, Kunigami-gun, Okinawa, Japan	1
 tdido	Tomás Di Domenico	 Wellcome Trust Sanger Institute, Wellcome Trust Genome Campus, United Kingdom	1
-Adrianzo	Adrian Emanuel Salatino	Department of Molecular Genetics and Biology of Complex Diseases, Institute of Medical Research A Lanari-IDIM, University of Buenos Aires, National Scientific and Technical Research Council (CONICET), Ciudad Autónoma de Buenos Aires, Argentina.	1
-christopher-schroeder	Christopher Schröder	Genome Informatics, Institute of Human Genetics, University of Duisburg-Essen, Essen, Germany	1
-khourhin	Etienne Kornobis	Epigenetic Regulation Unit, Pasteur Institute, Paris, France	1
-dirmeier	Simon Dirmeier	Department of Biosystems Science and Engineering, ETH Zurich, Basel, Switzerland	1
-camytran	Camy Tran	 National Microbiology Laboratory, Public Health Agency of Canada, Winnipeg, Canada	1
-julozi	Julien Seiler	Institut de Génétique et de Biologie Moléculaire et Cellulaire, CNRS, Illkirch, France	1
 moskalenko	Oleksandr Moskalenko	UFIT Research Computing, University of Florida, Gainesville, United States	1
+Adrianzo	Adrian Emanuel Salatino	Department of Molecular Genetics and Biology of Complex Diseases, Institute of Medical Research A Lanari-IDIM, University of Buenos Aires, National Scientific and Technical Research Council (CONICET), Ciudad Autónoma de Buenos Aires, Argentina.	1
+thw17	Timothy H. Webster	School of Life Sciences, Arizona State University, Tempe, United States	1
+dirmeier	Simon Dirmeier	Department of Biosystems Science and Engineering, ETH Zurich, Basel, Switzerland	1
+FrodePedersen	Frode Pedersen	Bioinformatics Research Centre, Aarhus University, Aarhus, Denmark	0
 dansondergaard	Dan Søndergaard	Bioinformatics Research Centre, Aarhus University, Aarhus, Denmark	0
-greed2411	Jaivarsan B	Department of Computer Science, Computer science with specialisation in Bioinformatics, VIT University Vellore, India	0
+svenrahmann	Sven Rahmann	Genome Informatics, Institute of Human Genetics, University of Duisburg-Essen, University Hospital Essen, Essen, Germany	0
+fgiacomoni	Franck Giacomoni	Clermont Auvergne University, INRA, UNH, Human Nutrition Unit, PFEM, Metabolism Exploration Platform, MetaboHUB-Clermont, Clermont-Ferrand, France	0
 arose	Alexander S Rose	RCSB Protein Data Bank, San Diego Supercomputer Center, University of California, San Diego, United States	0
-aldro61	Alexandre Drouin	Department of Computer Science and Software Engineering, Université Laval, Québec, Canada	0
-liyawang	Liya Wang	 Cold Spring Harbor Laboratory, Cold Spring Harbor, United States	0
 snewhouse	Stephen J. Newhouse	Department of Biostatistics and Health Informatics, Institute of Psychiatry, Psychology and Neuroscience, King’s College London, London, United Kingdom; NIHR Biomedical Research Centre at South London and Maudsley NHS Foundation Trust and King’s College London, United Kingdom; Farr Institute of Health Informatics Research, UCL Institute of Health Informatics, University College London, London, United Kingdom	0
 prvst	Felipe da Veiga Leprevost	Pathology Department, University of Michigan, Ann Arbor, United States	0
 JudoWill	Will Dampier	Drexel University College of Medicine, Department of Microbiology and Immunology, Philadelphia, United States	0
-fgiacomoni	Franck Giacomoni	Clermont Auvergne University, INRA, UNH, Human Nutrition Unit, PFEM, Metabolism Exploration Platform, MetaboHUB-Clermont, Clermont-Ferrand, France	0
-svenrahmann	Sven Rahmann	Genome Informatics, Institute of Human Genetics, University of Duisburg-Essen, University Hospital Essen, Essen, Germany	0
+greed2411	Jaivarsan B	Department of Computer Science, Computer science with specialisation in Bioinformatics, VIT University Vellore, India	0
+liyawang	Liya Wang	 Cold Spring Harbor Laboratory, Cold Spring Harbor, United States	0
+aldro61	Alexandre Drouin	Department of Computer Science and Software Engineering, Université Laval, Québec, Canada	0
 johanneskoester	Johannes Köster	Algorithms for reproducible bioinformatics, Genome Informatics, Institute of Human Genetics, University Hospital Essen, University of Duisburg-Essen; Dana Farber Cancer Institute, Harvard Medical School, Boston, United States	1245
