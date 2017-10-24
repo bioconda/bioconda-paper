@@ -1,8 +1,13 @@
 import requests
 
 
-repodata = requests.get("https://conda.anaconda.org/bioconda/linux-64/repodata.json").json()
-packages = set(p["name"] for p in repodata["packages"].values())
+def get_packages(arch):
+    repodata = requests.get("https://conda.anaconda.org/bioconda/{arch}/repodata.json".format(arch=arch)).json()
+    packages = set(p["name"] for p in repodata["packages"].values())
+    return packages
+
+packages = get_packages("linux-64") | get_packages("osx-64") | get_packages("noarch")
+print(len(packages))
 
 
 rule all:
