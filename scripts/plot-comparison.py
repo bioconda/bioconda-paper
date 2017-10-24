@@ -15,6 +15,7 @@ data = pd.DataFrame.from_dict({
     "Bioconda": [bio_related, "2015-09"],
     "Debian Med": [882, "2002-05"],
     "Gentoo Science": [480, "2005-10"],   # category sci-biology
+    "EasyBuild": [371, "2012-03"], # moduleclass bio
     "Biolinux": [308, "2006"],
     "Homebrew Science": [297, "2009-10"], # tag bioinformatics
     "GNU Guix": [254, "2014-12"],         # category bioinformatics
