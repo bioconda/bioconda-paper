@@ -25,7 +25,7 @@ for commit in utils_repo.get_commits():
 # order by commits
 authors.sort_values("commits", inplace=True, ascending=False)
 
-first_authors = ["daler", "bgruening"]
+first_authors = ["bgruening", "daler"]
 core_authors = ["chapmanb", "jerowe", "tomkinsc", "rvalieris", "druvus"]
 last_author = ["johanneskoester"]
 
