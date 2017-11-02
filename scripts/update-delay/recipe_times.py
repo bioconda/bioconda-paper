@@ -143,7 +143,7 @@ def get_pypi_metadata(package, version):
     return json.loads(requests.get('https://pypi.python.org/pypi/{}/{}/json'.format(package, version)).text)
 
 @TaskGenerator
-def get_github_releases_metadata(owner, repo):
+def get_github_releases_metadata(owner, repo, fetch_tags=False):
     import requests
     import json
     import time
@@ -154,21 +154,50 @@ def get_github_releases_metadata(owner, repo):
         print("Please set the environmental variables GITHUB_USERNAME and GITHUB_TOKEN to query Github's API")
         exit(1)
 
-    r = requests.get('https://api.github.com/repos/{}/{}/releases'.format(owner, repo),
+    what = ('release' if not fetch_tags else 'tags')
+    r = requests.get('https://api.github.com/repos/{}/{}/{}'.format(owner, repo, what),
                 auth=(environ['GITHUB_USERNAME'], environ['GITHUB_TOKEN']))
     return json.loads(r.text)
 
+
+def is_git_commit(tag):
+    non_hex = set(tag) - set("0123456789abcdef")
+    if non_hex:
+        return False
+    return True
+
 @TaskGenerator
-def find_github_date(gdata, url):
+def find_github_date(gdatar, gdatat, url):
     import iso8601
-    dates = [(e['tag_name'],e['published_at']) for e in gdata]
+    import requests
+    import json
+    import time
+    if not gdatar and not gdatat:
+        return None
     tag = re.match(r'^https?://github.com/[^/]+/[^/]+/archive/(.*)\.(tar.gz|tar.bz2|tgz|zip)$', url).groups()[0]
+
+    if 'tag_name' in gdatar[0]:
+        dates = [(e['tag_name'],e['published_at']) for e in gdatar]
+    else:
+        dates = []
+    seen = set([t for t,_ in dates])
+    for g in gdatat:
+        if g['name'] in seen:
+            continue
+        r = requests.get(g['commit']['url'],
+            auth=(environ['GITHUB_USERNAME'], environ['GITHUB_TOKEN']))
+        time.sleep(.05)
+        date = json.loads(r.text)['commit']['author']['date']
+        dates.append((g['name'], date))
     for t,d in dates:
         if t == tag:
             upload_date = iso8601.parse_date(d)
             break
     else:
-        raise ValueError("Could not find tag: " + tag)
+        if is_git_commit(tag) or tag in ['master']:
+            print("Could not find tag: {} (looks like a commit, though)".format(tag))
+            return None
+        return 'could not find tag: {}'.format(tag)
     is_uptodate = True
     for t,d in dates:
         d = iso8601.parse_date(d)
@@ -275,8 +304,9 @@ for pname, ver, url, source, timestamp in earliest:
             uver = uver[:-len('.tar.gz')]
         elif uver.endswith('.tar.bz2'):
             uver = uver[:-len('.tar.bz2')]
-        meta = get_github_releases_metadata(owner, repo)
-        gdate = find_github_date(meta, url)
+        metar = get_github_releases_metadata(owner, repo)
+        metat = get_github_releases_metadata(owner, repo, fetch_tags=True)
+        gdate = find_github_date(metar, metat, url)
         table.append((pname, ver, timestamp, gdate))
     elif type(url) == str:
         mtime = find_last_mtime(pname, ver, url)
