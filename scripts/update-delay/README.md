@@ -3,6 +3,15 @@
 Parse bioconda packages to discover the last update time of the package and the
 upstream release.
 
+## Execution
+
+    jug execute recipe_times.py
+    python analyse.py
+
+The first step will take a while and can be parallelized using the
+[jug](http://jug.readthedocs.io) mechanisms. Once that is finished,
+`analyse.py` is a fast summarization script.
+
 ## Environmental variables
 
 The following variables must be set for the script to run:
