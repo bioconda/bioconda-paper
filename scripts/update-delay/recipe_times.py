@@ -6,6 +6,9 @@ from jug import TaskGenerator, bvalue
 
 RecipeInfo = namedtuple('RecipeInfo', ['pname', 'version', 'url', 'source'])
 
+# This is the commit where the walk of the bioconda repository should start
+START_COMMIT = '6ef812f1b808ac7dc39313ff133ed42f027bebdb'
+
 
 def version_greater(va, vb):
     '''Compare two versions'''
@@ -113,11 +116,17 @@ def walk_repo(repo, init_commit=None):
 
 @TaskGenerator
 def retrieve_earliest_commit():
+    '''Finds the earliest commit where a current package is available.
+
+    Only considers packages which had a previous version available so that if
+    the current version is the first version of a package, we do not include
+    it.'''
     repo = git.Repo(environ["BIOCONDA_RECIPES_DIRECTORY"])
     cache = {}
     earliest = {}
     initial = True
-    for c in walk_repo(repo, '6ef812f1b808ac7dc39313ff133ed42f027bebdb'):
+    had_previous = set()
+    for c in walk_repo(repo, START_COMMIT):
         timestamp = c.committed_date
         for repinfo in extract_recipes(c, cache):
             if repinfo.pname in earliest:
@@ -128,10 +137,12 @@ def retrieve_earliest_commit():
                 elif version_greater(repinfo.version, cur[0].version):
                     if initial:
                         earliest[repinfo.pname] = [repinfo, timestamp]
+                else:
+                    had_previous.add(repinfo.pname)
             else:
                 earliest[repinfo.pname] = [repinfo, timestamp]
         initial = False
-    data = [(p.pname, p.version, p.url, p.source, t) for p, t in earliest.values()]
+    data = [(p.pname, p.version, p.url, p.source, t) for p, t in earliest.values() if p.pname in had_previous]
     return data
 
 @TaskGenerator
