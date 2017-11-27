@@ -296,8 +296,8 @@ rule author_list:
 
 rule fig1:
     input:
-        add_del="plots/add+del.svg",
-        contributions="plots/contributions.svg",
+        comp="plots/pkg-count-comparison.svg",
+        age="plots/age-comparison.svg",
         downloads="plots/downloads_violin.svg",
         ecosystems="plots/ecosystems.svg"
     output:
@@ -310,10 +310,10 @@ rule fig1:
 
 rule fig2:
     input:
+        add_del="plots/add+del.svg",
+        contributions="plots/contributions.svg",
         workflow="plots/workflow.svg",
         dag="plots/cnvkit.dag.colored.svg",
-        comp="plots/pkg-count-comparison.svg",
-        age="plots/age-comparison.svg",
         turnaround="plots/turnaround.svg"
     output:
         "figs/fig2.svg"
