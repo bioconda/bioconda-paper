@@ -1,24 +1,38 @@
-# Data analysis related to the Bioconda paper
+# Data analysis for the Bioconda paper
+
+This Snakemake workflow automatically generates all results and figures from the Bioconda paper.
+
+## Requirements
+
+Any 64-bit Linux installation with [GLIBC 2.5](http://unix.stackexchange.com/a/120381) or newer (i.e. any Linux distribution that is newer than CentOS 6).
+
 
 ## Usage
 
 This workflow can be used to recreate all results found in the Bioconda paper.
 
-### Step 1:
+### Step 1: Setup Bioconda
 
 Setup Bioconda as shown [here](https://bioconda.github.io).
 
-### Step 2:
+### Step 2: Install Snakemake
 
 Install Snakemake into an isolated environment
 
     conda create -n snakemake snakemake
 
-### Step 3:
+### Step 3: Download the workflow
 
-Download the workflow archive from https://doi.org/10.5281/zenodo.1068297 and unpack it. Then, enter the resulting directory.
+First, create a working directory:
 
-### Step 4:
+    mkdir bioconda-workflow
+    cd bioconda-workflow
+
+Then, download the workflow archive from https://doi.org/10.5281/zenodo.1068297 and unpack it with
+
+    tar -xf bioconda-paper-workflow.tar.gz
+
+### Step 4: Run the workflow
 
 Execute the analysis workflow with Snakemake
 
