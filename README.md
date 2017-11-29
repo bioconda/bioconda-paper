@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1068298.svg)](https://doi.org/10.5281/zenodo.1068298)
+
 # Data analysis for the Bioconda paper
 
 This Snakemake workflow automatically generates all results and figures from the Bioconda paper.
