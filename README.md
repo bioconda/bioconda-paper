@@ -16,7 +16,7 @@ Install Snakemake into an isolated environment
 
 ### Step 3:
 
-Download the workflow archive from https://doi.org/10.5281/zenodo.106829 and unpack it. Then, enter the resulting directory.
+Download the workflow archive from https://doi.org/10.5281/zenodo.1068297 and unpack it. Then, enter the resulting directory.
 
 ### Step 4:
 
