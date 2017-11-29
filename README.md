@@ -2,6 +2,8 @@
 
 ## Usage
 
+This workflow can be used to recreate all results found in the Bioconda paper.
+
 ### Step 1:
 
 Setup Bioconda as shown [here](https://bioconda.github.io).
@@ -14,10 +16,7 @@ Install Snakemake into an isolated environment
 
 ### Step 3:
 
-Checkout this git repository
-
-    git clone https://github.com/bioconda/bioconda-paper.git
-    cd bioconda-paper
+Download the workflow archive from https://doi.org/10.5281/zenodo.106829 and unpack it. Then, enter the resulting directory.
 
 ### Step 4:
 
