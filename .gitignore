@@ -2,6 +2,7 @@
 !scripts
 !scripts/*
 !scripts/common
+!scripts/update-delay/*
 !scripts/common/*
 scripts/.snakemake*
 !Snakefile
