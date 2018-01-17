@@ -8,18 +8,24 @@ Setup Bioconda as shown [here](https://bioconda.github.io).
 
 ### Step 2:
 
+Install bioconda-utils with
+
+    conda install bioconda-utils
+
+### Step 3:
+
 Install Snakemake into an isolated environment
 
     conda create -n snakemake snakemake
 
-### Step 3:
+### Step 4:
 
 Checkout this git repository
 
     git clone https://github.com/bioconda/bioconda-paper.git
     cd bioconda-paper
 
-### Step 4:
+### Step 5:
 
 Execute the analysis workflow with Snakemake
 

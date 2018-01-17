@@ -51,3 +51,6 @@ plt.xticks(rotation=45, ha="right")
 
 sns.despine()
 plt.savefig(snakemake.output.age, bbox_inches="tight")
+
+# store results as csv
+data[["source", "count", "age"]].to_csv(snakemake.output.csv, sep="\t", index=False)

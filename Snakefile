@@ -225,7 +225,8 @@ rule plot_comparison:
         "summary/hand-edited-summaries.tsv"
     output:
         counts="plots/pkg-count-comparison.svg",
-        age="plots/age-comparison.svg"
+        age="plots/age-comparison.svg",
+        csv="plots/comparison.tsv"
     conda:
         "envs/analysis.yaml"
     script:

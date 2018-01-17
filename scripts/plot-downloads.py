@@ -60,6 +60,8 @@ ax.text(x=0.5, y=1.0, s="Total downloads: {:,}".format(total_downloads),
          horizontalalignment="center", verticalalignment="top",
         transform=ax.transAxes)
 ax.set_xlabel('')
+plt.ylabel("downloads")
+ax.set_yticklabels(["$10^{{{:.0f}}}$".format(y) for y in ax.get_yticks()])
 
 # make a little room for the "total" text
 ax.axis(ymax=6)
