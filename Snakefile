@@ -7,7 +7,6 @@ def get_packages(arch):
     return packages
 
 packages = get_packages("linux-64") | get_packages("osx-64") | get_packages("noarch")
-print(len(packages))
 
 
 rule all:
@@ -133,14 +132,14 @@ rule collect_summaries:
 
 ################# Plots #################
 
-
-rule plot_adddel:
-    output:
-        "plots/add+del.svg"
-    conda:
-        "envs/analysis.yaml"
-    script:
-        "scripts/plot-add-del.py"
+if "GITHUB_TOKEN" in os.environ:
+    rule plot_adddel:
+        output:
+            "plots/add+del.svg"
+        conda:
+            "envs/analysis.yaml"
+        script:
+            "scripts/plot-add-del.py"
 
 
 rule plot_package_degree:
