@@ -55,7 +55,7 @@ Then, download the workflow archive from https://doi.org/10.5281/zenodo.1068297 
 
 Execute the analysis workflow with Snakemake
 
-    snakemake --use-conda -j --resources api_requests=1
+    snakemake --use-conda
 
 This tells Snakemake to run at most as many jobs in parallel as you have CPU cores.
 In addition the `api_requests` resource tells Snakemake to run only one job that
