@@ -15,7 +15,9 @@ This workflow can be used to recreate all results found in the Bioconda paper.
 
 ### Step 1: Install Miniconda3
 
-First, install the Miniconda3 distribution, a version of the conda package manager, together with a minimal Python 3. To reproduce the results of this workflow, do this on a 64bit Linux system with [GLIBC 2.5](http://unix.stackexchange.com/a/120381) or newer (i.e. any Linux distribution that is newer than CentOS 6).
+First, install the Miniconda3 distribution, a version of the conda package manager, together with a minimal Python 3. If you already have a Miniconda installation that defaults to Python 3, you can skip this step.
+
+To reproduce the results of this workflow, do this on a 64bit Linux system with [GLIBC 2.5](http://unix.stackexchange.com/a/120381) or newer (i.e. any Linux distribution that is newer than CentOS 6).
 Download Miniconda3 with
 
     wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
@@ -23,8 +25,6 @@ Download Miniconda3 with
 
 Make sure to answer `yes` to the question whether your PATH variable shall be modified.
 Afterwards, open a new shell/terminal.
-
-If you already have a Miniconda installation that defaults to Python 3, you can skip this step.
 
 ### Step 2: Setup Bioconda channel
 
