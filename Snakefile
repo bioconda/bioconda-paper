@@ -65,7 +65,8 @@ rule clone:
         "bioconda-recipes/.git/index"
     shell:
         "rm -rf bioconda-recipes && "
-        "git clone https://github.com/bioconda/bioconda-recipes.git bioconda-recipes"
+        "git clone https://github.com/bioconda/bioconda-recipes.git bioconda-recipes && "
+        "git reset --hard d819a66147566d31316198f89e7744b7a36356fe"
 
 
 rule git_log:
