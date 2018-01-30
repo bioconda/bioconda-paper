@@ -57,9 +57,4 @@ Execute the analysis workflow with Snakemake
 
     snakemake --use-conda
 
-This tells Snakemake to run at most as many jobs in parallel as you have CPU cores.
-In addition the `api_requests` resource tells Snakemake to run only one job that
-queries the anaconda.org API at a time (we don't want to perform a denial of
-service attack :-)).
-
 Results can be found in the folder `plots/`.
