@@ -13,19 +13,20 @@ Any 64-bit Linux installation with [GLIBC 2.5](http://unix.stackexchange.com/a/1
 
 This workflow can be used to recreate all results found in the Bioconda paper.
 
-### Step 1: Install Miniconda3
+### Step 1: Setup system
 
-First, install the Miniconda3 distribution, a version of the conda package manager, together with a minimal Python 3. If you already have a Miniconda installation that defaults to Python 3, you can skip this step.
+* If you are on a Linux system with [GLIBC 2.5](http://unix.stackexchange.com/a/120381) or newer (i.e. any Linux distribution that is newer than CentOS 6), you can simply install Miniconda3 with
 
-To reproduce the results of this workflow, do this on a 64bit Linux system with [GLIBC 2.5](http://unix.stackexchange.com/a/120381) or newer (i.e. any Linux distribution that is newer than CentOS 6).
-If you are using MacOS, you can quickly obtain a compatible linux environment with [Docker](https://docs.docker.com/docker-for-mac/install/).
-Download Miniconda3 with
+      curl -o /tmp/miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh && bash /tmp/miniconda.sh
 
-    wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    bash Miniconda3-latest-Linux-x86_64.sh
+   Make sure to answer `yes` to the question whether your PATH variable shall be modified.
+   Afterwards, open a new shell/terminal.
 
-Make sure to answer `yes` to the question whether your PATH variable shall be modified.
-Afterwards, open a new shell/terminal.
+* Otherwise, e.g., on MacOS or if you don't want to modify your system setup, install [Docker](https://www.docker.com/), run
+
+      docker run -it continuumio/miniconda3 /bin/bash
+  
+  and execute all the following steps within that container.
 
 ### Step 2: Setup Bioconda channel
 
