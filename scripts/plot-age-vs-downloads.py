@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use("agg")
 from matplotlib import pyplot as plt
 import datetime
 import numpy as np

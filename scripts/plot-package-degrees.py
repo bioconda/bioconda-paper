@@ -3,6 +3,8 @@ Get number of direct dependencies of each package and plot histogram
 
 """
 import glob
+import matplotlib
+matplotlib.use("agg")
 import matplotlib.pyplot as plt
 import seaborn as sns
 import json
