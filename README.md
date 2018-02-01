@@ -59,4 +59,5 @@ Execute the analysis workflow with Snakemake
 
     snakemake --use-conda
 
+Please wait a few minutes for the analysis to finish.
 Results can be found in the folder `plots/`.
