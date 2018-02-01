@@ -1,4 +1,6 @@
 from snakemake.shell import shell
+import matplotlib
+matplotlib.use("agg")
 import pandas as pd
 import seaborn as sns
 import networkx as nx
