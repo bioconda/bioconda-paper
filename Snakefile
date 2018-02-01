@@ -63,6 +63,8 @@ rule collect_package_data:
 rule clone:
     output:
         "bioconda-recipes/.git/index"
+    conda:
+        "envs/git.yaml"
     shell:
         "rm -rf bioconda-recipes; "
         "git clone https://github.com/bioconda/bioconda-recipes.git bioconda-recipes; "
@@ -75,6 +77,8 @@ rule git_log:
         "bioconda-recipes/.git/index"
     output:
         "git-log/bioconda-recipes.log"
+    conda:
+        "envs/git.yaml"
     shell:
         '(cd bioconda-recipes && '
         'git log '
