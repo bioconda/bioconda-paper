@@ -61,4 +61,10 @@ Execute the analysis workflow with Snakemake
     snakemake --use-conda
 
 Please wait a few minutes for the analysis to finish.
-Results can be found in the folder `plots/`.
+Results can be found in the folder `figs/`.
+If you have been running the workflow in the docker container (see above), 
+you can obtain the results with
+
+    docker cp <container-id>:/bioconda-workflow/figs .
+
+whith `<container-id>` being the ID of the container.
