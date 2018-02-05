@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use("agg")
 import seaborn as sns
 from svgutils.compose import *
 
