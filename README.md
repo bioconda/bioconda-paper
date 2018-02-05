@@ -1,4 +1,5 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1068297.svg)](https://doi.org/10.5281/zenodo.1068297)
+[![Snakemake](https://img.shields.io/badge/snakemake-≥4.5.1-brightgreen.svg)](https://snakemake.bitbucket.io)
 
 # Data analysis for the Bioconda paper
 
@@ -38,7 +39,7 @@ Setup Bioconda with
 
 ### Step 3: Install bioconda-utils and Snakmake
 
-Install bioconda-utils and Snakemake with
+Install bioconda-utils and Snakemake >=4.5.1 with
 
     conda install bioconda-utils snakemake
 
