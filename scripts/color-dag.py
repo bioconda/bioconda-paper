@@ -6,9 +6,8 @@ import seaborn as sns
 import networkx as nx
 import glob
 import os
-from networkx.drawing.nx_agraph import read_dot, write_dot, graphviz_layout
+from networkx.drawing.nx_pydot import read_dot, graphviz_layout
 from matplotlib.colors import rgb2hex
-from pydotplus import parser
 import matplotlib.pyplot as plt
 from matplotlib.ticker import NullLocator
 

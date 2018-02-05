@@ -9,7 +9,7 @@ dependencies:
   - curl ==7.54.1
   - git >=2.6.4
   - graphviz ==2.38.0
-  - pydotplus ==2.0.2
+  - pydot ==1.2.3
   - svgutils ==0.2.0
   - python >=3.5
   - pygithub ==1.34
