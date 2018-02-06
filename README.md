@@ -28,6 +28,9 @@ This workflow can be used to recreate all results found in the Bioconda paper.
       docker run -it continuumio/miniconda3 /bin/bash
   
   and execute all the following steps within that container.
+* If you want to use an existing Miniconda installation, make sure it is using Python 3 by default, e.g., via running
+  
+      python --version
 
 ### Step 2: Setup Bioconda channel
 
@@ -42,6 +45,8 @@ Setup Bioconda with
 Install bioconda-utils and Snakemake >=4.5.1 with
 
     conda install bioconda-utils snakemake
+
+If you already have an older version of Snakemake, please make sure it is updated to >=4.5.1.
 
 ### Step 4: Download the workflow
 
