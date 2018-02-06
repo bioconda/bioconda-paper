@@ -16,21 +16,32 @@ This workflow can be used to recreate all results found in the Bioconda paper.
 
 ### Step 1: Setup system
 
-* If you are on a Linux system with [GLIBC 2.5](http://unix.stackexchange.com/a/120381) or newer (i.e. any Linux distribution that is newer than CentOS 6), you can simply install Miniconda3 with
+#### Variant: Installing Miniconda on your system
 
-      curl -o /tmp/miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh && bash /tmp/miniconda.sh
+If you are on a Linux system with [GLIBC 2.5](http://unix.stackexchange.com/a/120381) or newer (i.e. any Linux distribution that is newer than CentOS 6), you can simply install Miniconda3 with
 
-   Make sure to answer `yes` to the question whether your PATH variable shall be modified.
-   Afterwards, open a new shell/terminal.
+    curl -o /tmp/miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh && bash /tmp/miniconda.sh
 
-* Otherwise, e.g., on MacOS or if you don't want to modify your system setup, install [Docker](https://www.docker.com/), run
+Make sure to answer `yes` to the question whether your PATH variable shall be modified.
+Afterwards, open a new shell/terminal.
 
-      docker run -it continuumio/miniconda3 /bin/bash
+#### Variant: Use a Docker container
+
+Otherwise, e.g., on MacOS or if you don't want to modify your system setup, install [Docker](https://www.docker.com/), run
+
+    docker run -it continuumio/miniconda3 /bin/bash
   
-  and execute all the following steps within that container.
-* If you want to use an existing Miniconda installation, make sure it is using Python 3 by default, e.g., via running
+and execute all the following steps within that container.
+
+#### Variant: Use an existing Miniconda installation
+
+If you want to use an existing Miniconda installation, please be aware that this is only possible if it uses Python 3 by default. You can check this via
   
-      python --version
+    python --version
+
+Further, ensure it is up to date with
+
+    conda update --all
 
 ### Step 2: Setup Bioconda channel
 
@@ -73,3 +84,29 @@ you can obtain the results with
     docker cp <container-id>:/bioconda-workflow/figs .
 
 whith `<container-id>` being the ID of the container.
+
+
+## Known errors
+
+* If you see an error like
+  ```
+  ImportError: No module named 'appdirs'
+  ```
+  when starting Snakemake, you are likely suffering from a bug in an older conda version. Make sure to update your conda installation with 
+
+      conda update --all
+
+  and then reinstall the `appdirs` and `snakemake` package with
+
+      conda install -f appdirs snakemake
+* If you see an error like
+  ```
+  ImportError: Missing required dependencies ['numpy']
+  ```
+  you are likely suffering from a bug in an older conda version. Make sure to update your conda installation with
+  
+      conda update --all
+  
+  and then reinstall the `snakemake` package with
+
+      conda install -f snakemake
