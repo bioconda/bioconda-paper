@@ -53,11 +53,11 @@ Setup Bioconda with
 
 ### Step 3: Install bioconda-utils and Snakmake
 
-Install bioconda-utils and Snakemake >=4.5.1 with
+Install bioconda-utils and Snakemake >=4.6.0 with
 
     conda install bioconda-utils snakemake
 
-If you already have an older version of Snakemake, please make sure it is updated to >=4.5.1.
+If you already have an older version of Snakemake, please make sure it is updated to >=4.6.0.
 
 ### Step 4: Download the workflow
 
