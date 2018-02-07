@@ -16,7 +16,7 @@ This workflow can be used to recreate all results found in the Bioconda paper.
 
 ### Step 1: Setup system
 
-#### Variant: Installing Miniconda on your system
+#### Variant a: Installing Miniconda on your system
 
 If you are on a Linux system with [GLIBC 2.5](http://unix.stackexchange.com/a/120381) or newer (i.e. any Linux distribution that is newer than CentOS 6), you can simply install Miniconda3 with
 
@@ -25,7 +25,7 @@ If you are on a Linux system with [GLIBC 2.5](http://unix.stackexchange.com/a/12
 Make sure to answer `yes` to the question whether your PATH variable shall be modified.
 Afterwards, open a new shell/terminal.
 
-#### Variant: Use a Docker container
+#### Variant b: Use a Docker container
 
 Otherwise, e.g., on MacOS or if you don't want to modify your system setup, install [Docker](https://www.docker.com/), run
 
@@ -33,7 +33,7 @@ Otherwise, e.g., on MacOS or if you don't want to modify your system setup, inst
   
 and execute all the following steps within that container.
 
-#### Variant: Use an existing Miniconda installation
+#### Variant c: Use an existing Miniconda installation
 
 If you want to use an existing Miniconda installation, please be aware that this is only possible if it uses Python 3 by default. You can check this via
   
