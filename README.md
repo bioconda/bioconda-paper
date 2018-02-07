@@ -1,5 +1,5 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1068297.svg)](https://doi.org/10.5281/zenodo.1068297)
-[![Snakemake](https://img.shields.io/badge/snakemake-≥4.5.1-brightgreen.svg)](https://snakemake.bitbucket.io)
+[![Snakemake](https://img.shields.io/badge/snakemake-≥4.6.0-brightgreen.svg)](https://snakemake.bitbucket.io)
 
 # Data analysis for the Bioconda paper
 
