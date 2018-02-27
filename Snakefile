@@ -1,3 +1,7 @@
+if sys.platform != "linux":
+    raise WorkflowError("Unsupported operating system: Please execute this workflow only on 64 bit Linux (see README).")
+
+
 import requests
 
 
