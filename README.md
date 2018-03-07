@@ -8,6 +8,7 @@ This Snakemake workflow automatically generates all results and figures from the
 ## Requirements
 
 Any 64-bit Linux installation with [GLIBC 2.5](http://unix.stackexchange.com/a/120381) or newer (i.e. any Linux distribution that is newer than CentOS 6).
+Note that the restriction of this workflow to Linux is purely a design decision (to save space and ensure reproducibility) and not related to Conda/Bioconda. Bioconda packages are available for both Linux and MacOS in general.
 
 
 ## Usage
