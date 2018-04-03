@@ -294,12 +294,22 @@ rule author_list:
     input:
         "resources/authors.tsv"
     output:
-        tex="resources/authors.tex",
         table="resources/authors-commits.tsv"
     conda:
         "envs/analysis.yaml"
     script:
         "scripts/author-list.py"
+
+
+rule author_list_tex:
+    input:
+        "resources/authors-commits.tsv"
+    output:
+        tex="resources/authors.tex"
+    conda:
+        "envs/analysis.yaml"
+    script:
+        "scripts/author-tex.py"
 
 
 ########### Figures #############
