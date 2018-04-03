@@ -324,7 +324,8 @@ rule fig2:
         contributions="plots/contributions.svg",
         workflow="plots/workflow.svg",
         dag="plots/cnvkit.dag.colored.svg",
-        turnaround="plots/turnaround.svg"
+        turnaround="plots/turnaround.svg",
+        usage="plots/usage.svg"
     output:
         "figs/fig2.svg"
     conda:
