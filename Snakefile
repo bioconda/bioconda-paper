@@ -305,7 +305,8 @@ rule author_list_tex:
     input:
         "resources/authors-commits.tsv"
     output:
-        tex="resources/authors.tex"
+        tex="resources/authors.tex",
+        xlsx="resources/authors.xlsx"
     conda:
         "envs/analysis.yaml"
     script:
